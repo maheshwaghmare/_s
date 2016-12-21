@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package _s
+ * @package Awesome_Blog
  */
 
 ?>
@@ -19,23 +19,25 @@
 			the_content();
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', '_s' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'awesome-blog' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<?php
-			edit_post_link(
-				sprintf(
-					/* translators: %s: Name of current post */
-					esc_html__( 'Edit %s', '_s' ),
-					the_title( '<span class="screen-reader-text">"', '"</span>', false )
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);
-		?>
-	</footer><!-- .entry-footer -->
+	<?php if ( get_edit_post_link() ) : ?>
+		<footer class="entry-footer">
+			<?php
+				edit_post_link(
+					sprintf(
+						/* translators: %s: Name of current post */
+						esc_html__( 'Edit %s', 'awesome-blog' ),
+						the_title( '<span class="screen-reader-text">"', '"</span>', false )
+					),
+					'<span class="edit-link">',
+					'</span>'
+				);
+			?>
+		</footer><!-- .entry-footer -->
+	<?php endif; ?>
 </article><!-- #post-## -->
