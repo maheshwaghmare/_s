@@ -138,3 +138,61 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+add_action( 'wp_footer', function() {
+	?>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
+	<style type="text/css">
+		.site-content {
+		    max-width: 1000px;
+		    margin: 0 auto;
+		}
+		body {
+		    background: #eaeaea;
+		    font-family: font-family: 'Open Sans', sans-serif;
+		}
+		.site-content article {
+		    background: #fff;
+		    padding: 0.1em 1.5rem;
+		}
+		.entry-title a {
+		    font-size: 1.2em;
+		    text-transform: none;
+		    text-decoration: none;
+		    color: #32373c;
+		}
+		#primary {
+		    float: left;
+		    width: 70%;
+		}
+		#secondary {
+		    float: right;
+		    width: 30%;
+		    padding: 0 20px;
+		}
+		.widget {
+		    background: #fff;
+		    padding: 1rem;
+		}
+		ul {
+		    margin: 0;
+		}
+		/**
+		 * Meta
+		 */
+		.entry-meta {
+    		font-size: 0.8rem;
+		}
+		.entry-content p {
+		    margin: 0 0 0.5rem 0;
+		}
+		.entry-meta a {
+		    text-decoration: none;
+		}
+		.entry-title {
+		    margin-bottom: 0px;
+		}
+	</style>
+
+	<?php
+});
