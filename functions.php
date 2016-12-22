@@ -190,7 +190,53 @@ add_action( 'wp_footer', function() {
 		    text-decoration: none;
 		}
 		.entry-title {
-		    margin-bottom: 0px;
+		    margin-bottom: 0.5em;
+		}
+
+		button,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"] {
+		    border: none;
+		    border-radius: 0;
+		    box-shadow: none;
+		    background: #5a4ef8;
+		    text-shadow: none;
+		    color: #fff;
+		    padding: 1em 2em;
+		}
+		input[type="text"],
+		input[type="email"],
+		input[type="url"],
+		input[type="password"],
+		input[type="search"],
+		input[type="number"],
+		input[type="tel"],
+		input[type="range"],
+		input[type="date"],
+		input[type="month"],
+		input[type="week"],
+		input[type="time"],
+		input[type="datetime"],
+		input[type="datetime-local"],
+		input[type="color"],
+		textarea {
+		    border-radius: 0;
+		    padding: 0.5em 1em;
+		}
+		body,
+		button,
+		input,
+		select,
+		textarea {
+		    font-size: 1rem;
+		}
+		/**
+		 * Colors
+		 */
+		a,
+		a:visited {
+			color: #5a4ef8;
 		}
 	</style>
 
