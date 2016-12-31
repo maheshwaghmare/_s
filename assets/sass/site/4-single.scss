@@ -1,0 +1,69 @@
+
+.single .entry-header {
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1.5em;
+}
+
+/**
+ * Comments
+ */
+
+.comments-area {
+    margin-top: 2em;
+    padding-top: 2em;
+    border-top: 1px solid #eaeaea;
+}
+
+.comment {
+    list-style: none;
+    margin-bottom: 1.5em;
+
+    ol.children {
+	    margin: 1em 0 0 0;
+	}
+}
+
+.comment-list {
+    margin: 1.5em 0 2em 0;
+    padding: 0;
+}
+
+
+.comment-meta {
+    margin-bottom: 1em;
+}
+
+.reply {
+    margin-top: 1em;
+}
+
+.reply,
+.comment-meta {
+    font-size: 0.8em;
+}
+
+.comment-metadata {
+    display: inline-block;
+    float: right;
+    margin-top: 0.5em;
+}
+
+.comment-author {
+    display: inline-block;
+
+	img {
+	    vertical-align: -1em;
+	    border-radius: 50%;
+    	margin-right: 0.5em;
+	}
+}
+
+/**
+ * 404
+ */
+.error404 #primary {
+    float: none;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+}

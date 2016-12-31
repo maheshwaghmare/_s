@@ -34,7 +34,7 @@
 						esc_html__( 'Edit %s', 'awesome-blog' ),
 						the_title( '<span class="screen-reader-text">"', '"</span>', false )
 					),
-					'<span class="edit-link">',
+					'<span class="edit-link"> <i class="fa fa-edit"></i> ',
 					'</span>'
 				);
 			?>

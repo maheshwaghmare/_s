@@ -52,52 +52,52 @@ module.exports = function (grunt) {
                 },
                 dist: {
                     files: [
-                        /*{
-                        'style.css': 'sass/style.scss'
-                        },*/
+                        {
+                        'style.css': 'assets/sass/style.scss'
+                        },
                         /* Common Style */
-                        {
-                            expand: true,
-                            cwd: 'sass/',
-                            src: ['style.scss'],
-                            dest: 'assets/css/unminified', 
-                            ext: '.css'
+                        // {
+                        //     expand: true,
+                        //     cwd: 'sass/',
+                        //     src: ['style.scss'],
+                        //     dest: 'assets/css/unminified', 
+                        //     ext: '.css'
                             
-                        },
-                        /* Header Layouts */
-                        {
-                            expand: true,
-                            cwd: 'sass/site/header/header-layouts/',
-                            src: ['**.scss'],
-                            dest: 'assets/css/unminified', 
-                            ext: '.css'
+                        // },
+                        // /* Header Layouts */
+                        // {
+                        //     expand: true,
+                        //     cwd: 'sass/site/header/header-layouts/',
+                        //     src: ['**.scss'],
+                        //     dest: 'assets/css/unminified', 
+                        //     ext: '.css'
                             
-                        },
-                        /* Blog Layouts */
-                        {
-                            expand: true,
-                            cwd: 'sass/site/blog/blog-layouts/blog-styles/',
-                            src: ['**.scss'],
-                            dest: 'assets/css/unminified', 
-                            ext: '.css'
+                        // },
+                        // /* Blog Layouts */
+                        // {
+                        //     expand: true,
+                        //     cwd: 'sass/site/blog/blog-layouts/blog-styles/',
+                        //     src: ['**.scss'],
+                        //     dest: 'assets/css/unminified', 
+                        //     ext: '.css'
                             
-                        },
-                        /* Single Blog Post Single Layouts */
-                        {
-                            expand: true,
-                            cwd: 'sass/site/blog/single-post-layouts/single-post-styles/',
-                            src: ['**.scss'],
-                            dest: 'assets/css/unminified', 
-                            ext: '.css'
-                        },
-                        /* Small Footer Layouts */
-                        {
-                            expand: true,
-                            cwd: 'sass/site/footer/small-footer/',
-                            src: ['**.scss'],
-                            dest: 'assets/css/unminified', 
-                            ext: '.css'
-                        },
+                        // },
+                        // /* Single Blog Post Single Layouts */
+                        // {
+                        //     expand: true,
+                        //     cwd: 'sass/site/blog/single-post-layouts/single-post-styles/',
+                        //     src: ['**.scss'],
+                        //     dest: 'assets/css/unminified', 
+                        //     ext: '.css'
+                        // },
+                        // /* Small Footer Layouts */
+                        // {
+                        //     expand: true,
+                        //     cwd: 'sass/site/footer/small-footer/',
+                        //     src: ['**.scss'],
+                        //     dest: 'assets/css/unminified', 
+                        //     ext: '.css'
+                        // },
 
                     ]
                 }
@@ -190,6 +190,7 @@ module.exports = function (grunt) {
                     },
                     src: [
                         '**',
+                        '!style - Copy.css',
                         '!node_modules/**',
                         '!build/**',
                         '!css/sourcemap/**',

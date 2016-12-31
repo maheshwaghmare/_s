@@ -104,9 +104,11 @@ add_action( 'widgets_init', 'awesome_blog_widgets_init' );
 function awesome_blog_scripts() {
 	wp_enqueue_style( 'awesome-blog-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'awesome-blog-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_style( 'awesome-blog-font-googleapis', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700,700i' );
+	wp_enqueue_style( 'awesome-blog-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css' );
+	wp_enqueue_script( 'awesome-blog-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'awesome-blog-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'awesome-blog-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -141,103 +143,9 @@ require get_template_directory() . '/inc/jetpack.php';
 
 add_action( 'wp_footer', function() {
 	?>
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 	<style type="text/css">
-		.site-content {
-		    max-width: 1000px;
-		    margin: 0 auto;
-		}
-		body {
-		    background: #eaeaea;
-		    font-family: font-family: 'Open Sans', sans-serif;
-		}
-		.site-content article {
-		    background: #fff;
-		    padding: 0.1em 1.5rem;
-		}
-		.entry-title a {
-		    font-size: 1.2em;
-		    text-transform: none;
-		    text-decoration: none;
-		    color: #32373c;
-		}
-		#primary {
-		    float: left;
-		    width: 70%;
-		}
-		#secondary {
-		    float: right;
-		    width: 30%;
-		    padding: 0 20px;
-		}
-		.widget {
-		    background: #fff;
-		    padding: 1rem;
-		}
-		ul {
-		    margin: 0;
-		}
-		/**
-		 * Meta
-		 */
-		.entry-meta {
-    		font-size: 0.8rem;
-		}
-		.entry-content p {
-		    margin: 0 0 0.5rem 0;
-		}
-		.entry-meta a {
-		    text-decoration: none;
-		}
-		.entry-title {
-		    margin-bottom: 0.5em;
-		}
 
-		button,
-		input[type="button"],
-		input[type="reset"],
-		input[type="submit"] {
-		    border: none;
-		    border-radius: 0;
-		    box-shadow: none;
-		    background: #5a4ef8;
-		    text-shadow: none;
-		    color: #fff;
-		    padding: 1em 2em;
-		}
-		input[type="text"],
-		input[type="email"],
-		input[type="url"],
-		input[type="password"],
-		input[type="search"],
-		input[type="number"],
-		input[type="tel"],
-		input[type="range"],
-		input[type="date"],
-		input[type="month"],
-		input[type="week"],
-		input[type="time"],
-		input[type="datetime"],
-		input[type="datetime-local"],
-		input[type="color"],
-		textarea {
-		    border-radius: 0;
-		    padding: 0.5em 1em;
-		}
-		body,
-		button,
-		input,
-		select,
-		textarea {
-		    font-size: 1rem;
-		}
-		/**
-		 * Colors
-		 */
-		a,
-		a:visited {
-			color: #5a4ef8;
-		}
+		
 	</style>
 
 	<?php

@@ -1,0 +1,66 @@
+
+/**
+ * Site Header
+ */
+.site-header {
+    background: #fff;
+    margin-bottom: 3em;
+    padding: 1em 2em;
+
+    .menu {
+	    margin-left: -1em;
+	    margin-right: -1em;
+	}
+}
+
+/**
+ * Branding
+ */
+.site-branding {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+.site-title,
+.site-description {
+    margin: 0;
+}
+
+.site-title a {
+    font-size: 3rem;
+    text-decoration: none;
+    font-weight: 300;
+}
+
+.site-description {
+    font-weight: 400;
+}
+
+/**
+ * Navigation
+ */
+.menu a {
+    padding: 0 1em;
+    line-height: 2;
+    color: #404040;
+}
+
+.main-navigation {
+    text-align: center;
+    float: none;
+
+	li {
+	    float: none;
+	    display: inline-block;
+	}
+
+	ul ul {
+	    background: #fff;
+	    padding: 1em;
+
+		li {
+		    text-align: left;
+		    font-size: 0.9rem;
+		}
+	}
+}

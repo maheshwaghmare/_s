@@ -1,0 +1,29 @@
+.widget {
+    background: #fff;
+    padding: 1rem;
+}
+
+.widget-area {
+
+	h2 {
+	    margin-top: 0;
+	}
+
+	ul {
+		padding: 0 0 0 1em;
+	}
+
+	a {
+	    font-size: 0.8em;
+	    &:hover {
+	    	box-shadow: 0px 2px 0px 0px #5a4ef5;
+	    }
+	}
+
+	.search-submit {
+		display: inline-block;
+	    padding: 0.7em 0.8em;
+	    line-height: normal;
+	}
+}
+
