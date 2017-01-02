@@ -859,13 +859,11 @@ textarea {
     float: left;
     width: 70%;
     padding-right: 1em;
-    padding-left: 2em;
   }
   #secondary {
     float: right;
     width: 30%;
     padding-left: 1em;
-    padding-right: 2em;
   }
 }
 
@@ -874,7 +872,8 @@ textarea {
  */
 .site-content {
   max-width: 1300px;
-  margin: 0 auto;
+  margin: 3em auto 0 auto;
+  padding: 0 50px;
 }
 
 @media (max-width: 768px) {
@@ -891,8 +890,9 @@ textarea {
 /**
  * Page Title & Page Header
  */
-.page-title {
-  margin-bottom: 0.2em;
+.page-title img {
+  vertical-align: -0.5em;
+  margin-right: 0.5em;
 }
 
 .page-header {
@@ -972,16 +972,17 @@ textarea {
 }
 
 .entry-meta > span {
-  margin: 0.2em;
+  margin-right: 0.5em;
 }
 
-.entry-meta > span > i {
+.entry-meta i {
   margin-right: 0.5em;
 }
 
 .byline img {
-  vertical-align: -5px;
-  margin-right: 10px;
+  vertical-align: -0.5em;
+  margin-right: 0.5em;
+  border-radius: 50%;
 }
 
 .nav-links a,
@@ -1022,7 +1023,6 @@ textarea {
  */
 .site-header {
   background: #fff;
-  margin-bottom: 3em;
   padding: 1em 2em;
 }
 
@@ -1083,6 +1083,15 @@ textarea {
   font-size: 0.9rem;
 }
 
+/**
+ * Custom Header
+ */
+.custom-headers {
+  text-align: center;
+  margin-top: 3em;
+  line-height: 0;
+}
+
 .site-footer {
   margin-top: 3em;
   background: #fff;
@@ -1112,7 +1121,7 @@ textarea {
   box-shadow: 0px 2px 0px 0px #5a4ef5;
 }
 
-.widget-area .search-submit {
+input.search-submit {
   display: inline-block;
   padding: 0.7em 0.8em;
   line-height: normal;
@@ -1130,6 +1139,11 @@ textarea {
   margin-top: 2em;
   padding-top: 2em;
   border-top: 1px solid #eaeaea;
+}
+
+.custom-background .comments-area {
+  background: #fff;
+  padding: 1em 1em 0.5em 1em;
 }
 
 .comment {
@@ -1176,15 +1190,31 @@ textarea {
 }
 
 /**
- * 404
+ * Page Content
  */
-.error404 #primary {
-  float: none;
-  width: 100%;
-  padding: 0;
-  text-align: center;
+.error404 .page-content,
+.search .page-content {
+  background: #fff;
+  padding: 0.5em 1.5em 1.5em 1.5em;
 }
 
+/**
+ * Page Title
+ */
+.page-title i {
+  margin-right: 0.2em;
+}
+
+/**
+ * Page Description
+ */
+.author .archive-description {
+  margin-top: 1em;
+}
+
+/**
+ * Entry Content
+ */
 .entry-content a {
   border-bottom: 1px dotted;
   padding-bottom: 3px;
