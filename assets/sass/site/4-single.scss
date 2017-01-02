@@ -12,6 +12,11 @@
     margin-top: 2em;
     padding-top: 2em;
     border-top: 1px solid #eaeaea;
+
+    .custom-background & {
+        background: #fff;
+        padding: 1em 1em 0.5em 1em;
+    }
 }
 
 .comment {
@@ -59,11 +64,12 @@
 }
 
 /**
- * 404
+ * Page Content
  */
-.error404 #primary {
-    float: none;
-    width: 100%;
-    padding: 0;
-    text-align: center;
+.page-content {
+    .error404 &,
+    .search & {
+        background: #fff;
+        padding: 0.5em 1.5em 1.5em 1.5em;
+    }
 }

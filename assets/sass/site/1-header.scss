@@ -4,7 +4,6 @@
  */
 .site-header {
     background: #fff;
-    margin-bottom: 3em;
     padding: 1em 2em;
 
     .menu {
@@ -63,4 +62,13 @@
 		    font-size: 0.9rem;
 		}
 	}
+}
+
+/**
+ * Custom Header
+ */
+.custom-headers {
+    text-align: center;
+    margin-top: 3em;
+    line-height: 0;
 }

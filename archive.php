@@ -17,7 +17,17 @@ get_header(); ?>
 
 			<header class="page-header">
 				<?php
-					the_archive_title( '<h1 class="page-title">', '</h1>' );
+					if( is_tag() ) {
+						the_archive_title( '<h1 class="page-title"> <i class="fa fa-tag"></i> ', '</h1>' );
+					} else if( is_category() ) {
+						the_archive_title( '<h1 class="page-title"> <i class="fa fa-folder"></i> ', '</h1>' );
+					} else if( is_date() ) {
+						the_archive_title( '<h1 class="page-title"> <i class="fa fa-calendar"></i> ', '</h1>' );
+					} else if( is_author() ) {
+						the_archive_title( '<h1 class="page-title"> ' . get_avatar( esc_url( get_the_author_meta( 'ID' ) ), 50 ), '</h1>' );
+					} else {
+						the_archive_title( '<h1 class="page-title">', '</h1>' );
+					}
 					the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
