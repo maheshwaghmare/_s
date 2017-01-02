@@ -45,7 +45,11 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_pagination( array(
+				'mid_size'  => 4,
+				'prev_text' => __( '<i class="fa fa-angle-left"></i> Previous', 'awesome-blog' ),
+				'next_text' => __( 'Next <i class="fa fa-angle-right"></i>', 'awesome-blog' ),
+			) );
 
 		else :
 

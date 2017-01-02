@@ -1,7 +1,14 @@
-
+/**
+ * Entry Header
+ */
 .single .entry-header {
     border-bottom: 1px solid #eaeaea;
     padding-bottom: 1.5em;
+}
+
+.entry-thumbnail {
+    line-height: 0;
+    margin-bottom: 1.5em;
 }
 
 /**

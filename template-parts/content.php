@@ -10,11 +10,27 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 	<header class="entry-header">
+
 		<?php
 		if ( is_single() ) :
+
+			if( has_post_thumbnail( get_the_ID() ) ) : ?>
+				<div class="entry-thumbnail">
+					<?php the_post_thumbnail(); ?>
+				</div><!-- .entry-thumbnail -->	
+			<?php
+			endif;
+
 			the_title( '<h1 class="entry-title">', '</h1>' );
 		else :
+			if( has_post_thumbnail( get_the_ID() ) ) : ?>
+				<div class="entry-thumbnail">
+					<?php the_post_thumbnail(); ?>
+				</div><!-- .entry-thumbnail -->	
+			<?php
+			endif;
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
@@ -24,6 +40,7 @@
 		</div><!-- .entry-meta -->
 		<?php
 		endif; ?>
+
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">

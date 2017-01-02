@@ -902,7 +902,7 @@ textarea {
 }
 
 .page-header p {
-  margin: 0;
+  margin: 0.5em 0 0 0;
   color: #999;
 }
 
@@ -992,7 +992,6 @@ textarea {
   display: inline-block;
   font-size: 1em;
   text-decoration: none;
-  font-weight: 300;
 }
 
 .nav-links a:hover, .nav-links a.current,
@@ -1050,10 +1049,6 @@ textarea {
   font-weight: 300;
 }
 
-.site-description {
-  font-weight: 400;
-}
-
 /**
  * Navigation
  */
@@ -1105,31 +1100,40 @@ textarea {
   padding: 1rem;
 }
 
+.widget-area {
+  font-size: 0.8em;
+}
+
 .widget-area h2 {
-  margin-top: 0;
+  font-size: 1.5rem;
+  margin: 0.3em 0;
 }
 
 .widget-area ul {
   padding: 0 0 0 1em;
 }
 
-.widget-area a {
-  font-size: 0.8em;
-}
-
 .widget-area a:hover {
   box-shadow: 0px 2px 0px 0px #5a4ef5;
 }
 
+.post-password-form input[type="submit"],
 input.search-submit {
-  display: inline-block;
-  padding: 0.7em 0.8em;
   line-height: normal;
+  padding: 0.7em 0.8em;
 }
 
+/**
+ * Entry Header
+ */
 .single .entry-header {
   border-bottom: 1px solid #eaeaea;
   padding-bottom: 1.5em;
+}
+
+.entry-thumbnail {
+  line-height: 0;
+  margin-bottom: 1.5em;
 }
 
 /**
