@@ -22,10 +22,8 @@ blockquote {
  * Reset Tags
  */
 body {
-    background: #eaeaea;
-    font-family: 'Open Sans', sans-serif;
-    font-family: 'Roboto Condensed', sans-serif;
-    font-family: 'Roboto', sans-serif;
+    background: #f1f1f1;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,7 +35,7 @@ button,
 input,
 select,
 textarea {
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 ul {
@@ -147,13 +145,11 @@ textarea {
  */
 .entry-title,
 .entry-title a {
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-transform: none;
     text-decoration: none;
     color: #32373c;
-    margin: 0 0 0.5em 0;
+    margin: 0 0 0.3em 0;
 }
 
 /**
@@ -182,7 +178,7 @@ textarea {
  * Entry Footer
  */
 .entry-footer {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-top: 1em;
 
     i,
@@ -200,7 +196,7 @@ textarea {
  */
 
 .entry-meta {
-	font-size: 0.8rem;
+	font-size: 0.9rem;
     i,
     a {
         color: #838383;
@@ -228,7 +224,6 @@ textarea {
         display: inline-block;
         font-size: 1em;
         text-decoration: none;
-        font-weight: 300;
 
         &:hover,
         &.current {
