@@ -7,7 +7,8 @@
  * @package Awesome_Blog
  */
 
-get_header(); ?>
+get_header();
+get_sidebar( 'left' ); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -45,7 +46,11 @@ get_header(); ?>
 
 			endwhile;
 
-			the_posts_navigation();
+			the_posts_pagination( array(
+				'mid_size'  => 4,
+				'prev_text' => __( '<i class="fa fa-angle-left"></i> Previous', 'awesome-blog' ),
+				'next_text' => __( 'Next <i class="fa fa-angle-right"></i>', 'awesome-blog' ),
+			) );
 
 		else :
 
@@ -57,5 +62,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar();
+get_sidebar( 'right' );
 get_footer();

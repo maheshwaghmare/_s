@@ -1,7 +1,25 @@
 
-.single .entry-header {
-    border-bottom: 1px solid #eaeaea;
-    padding-bottom: 1em;
+
+.single {
+    .entry-header {
+        border-bottom: 1px solid #eaeaea;
+        padding: 0 0 2em 0;
+        text-align: center;
+    }
+
+    @media ( min-width: 768px ) {
+        #primary {
+            float: none;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+    }
+
+    .site-main > article {
+        padding: 2em;
+        margin-bottom: 2em;
+    }
 }
 
 /**
@@ -9,30 +27,52 @@
  */
 
 .comments-area {
-    margin-top: 2em;
-    padding-top: 2em;
-    border-top: 1px solid #eaeaea;
+    margin: 2em 0 0 0;
+    padding: 0;
+}
 
-    .custom-background & {
-        background: #fff;
-        padding: 1em 1em 0.5em 1em;
+.comments-title {
+    margin-bottom: 0.5em;
+    background: #fff;
+    padding: 0.5em 1em;
+}
+
+.pingback {
+    background: white;
+    padding: 0 1.5em 0.5em;
+    list-style-type: none;
+    font-size: 1rem;
+    &:first-child {
+        padding-top: 1em;
     }
 }
 
 .comment {
     list-style: none;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
+
+    > article {
+        background: #fff;
+        padding: 1.5em;
+    }
 
     ol.children {
-	    margin: 1em 0 0 0;
-	}
+        margin: 1em 0 0 0;
+    }
+}
+
+.comment-respond {
+    background: #fff;
+    padding: 1em 1.5em;
 }
 
 .comment-list {
-    margin: 1.5em 0 2em 0;
+    margin: 0;
     padding: 0;
+    > .comment {
+        padding: 0;
+    }
 }
-
 
 .comment-meta {
     margin-bottom: 1em;
@@ -48,6 +88,7 @@
 }
 
 .comment-metadata {
+    font-weight: 600;
     display: inline-block;
     float: right;
     margin-top: 0.5em;
@@ -72,4 +113,28 @@
         background: #fff;
         padding: 0.5em 1.5em 1.5em 1.5em;
     }
+}
+
+/**
+ * Navigation
+ */
+.link-title {
+    font-size: 1.5rem;
+}
+
+.link-caption {
+    display: block;
+    font-size: 0.9rem;
+    color: #8c8c8c;
+}
+
+/**
+ * Post formats
+ */
+
+/**
+ * => Password Protected
+ */
+.post-password-form {
+    text-align: center;
 }

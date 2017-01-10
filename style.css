@@ -275,7 +275,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  margin-bottom: 1.5em;
+  margin: 0.5em 0 1em 0;
 }
 
 dfn, cite, em, i {
@@ -432,7 +432,6 @@ input[type="submit"] {
   color: rgba(0, 0, 0, 0.8);
   font-size: 16px;
   font-size: 1rem;
-  line-height: 1;
   padding: .6em 1em .4em;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
 }
@@ -600,7 +599,7 @@ a:hover, a:active {
 .site-main .comment-navigation, .site-main
 .posts-navigation, .site-main
 .post-navigation {
-  margin: 0 0 1.5em;
+  margin: 0 0 2em 0;
   overflow: hidden;
 }
 
@@ -729,10 +728,6 @@ a:hover, a:active {
   display: block;
 }
 
-.hentry {
-  margin: 0 0 1.5em;
-}
-
 .byline,
 .updated:not(.published) {
   display: none;
@@ -799,21 +794,15 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
-body,
-button,
-input,
-select,
-textarea {
+body {
   font-size: 1.2rem;
 }
 
-ul {
-  margin: 0;
-}
-
-table, td, th {
+table,
+td,
+th {
   border: 1px solid #eaeaea;
-  padding: 0.5em 1em;
+  padding: 0.3em;
 }
 
 button,
@@ -826,6 +815,7 @@ input[type="submit"] {
   background: #5a4ef8;
   text-shadow: none;
   color: #fff;
+  line-height: normal;
   padding: 1em 2em;
 }
 
@@ -846,22 +836,40 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
   border-radius: 0;
-  padding: 0.5em 1em;
+  line-height: normal;
+  padding: 1em;
 }
 
 /**
  * Layout
  */
 @media (min-width: 768px) {
+  #secondary-left {
+    float: left;
+    width: 30%;
+  }
+  .blog #secondary-left,
+  .archive #secondary-left {
+    width: 20%;
+  }
   #primary {
     float: left;
     width: 70%;
-    padding-right: 1em;
+    padding-right: 0.5em;
   }
-  #secondary {
+  .blog #primary,
+  .archive #primary {
+    padding: 0 1em;
+    width: 60%;
+  }
+  #secondary-right {
     float: right;
     width: 30%;
-    padding-left: 1em;
+    padding-left: 0.5em;
+  }
+  .blog #secondary-right,
+  .archive #secondary-right {
+    width: 20%;
   }
 }
 
@@ -869,9 +877,8 @@ textarea {
  * Site Content
  */
 .site-content {
-  max-width: 1300px;
-  margin: 3em auto 0 auto;
-  padding: 0 50px;
+  margin: 3em auto 3em auto;
+  padding: 0 2em;
 }
 
 @media (max-width: 768px) {
@@ -880,14 +887,19 @@ textarea {
   }
 }
 
-.site-content article {
+.site-main > article {
   background: #fff;
   padding: 1em 1.5em;
+  margin-bottom: 1em;
 }
 
 /**
  * Page Title & Page Header
  */
+.page-title {
+  font-size: 2.2rem;
+}
+
 .page-title img {
   vertical-align: -0.5em;
   margin-right: 0.5em;
@@ -904,16 +916,25 @@ textarea {
   color: #999;
 }
 
+.archive-description {
+  margin-top: 0.5em;
+}
+
 /**
  * Entry Title
  */
 .entry-title,
 .entry-title a {
-  font-size: 2.2rem;
+  font-size: 2rem;
   text-transform: none;
   text-decoration: none;
   color: #32373c;
-  margin: 0 0 0.3em 0;
+  margin: 0 0 0.5em 0;
+}
+
+.single .entry-title, .single
+.entry-title a {
+  font-size: 2.5rem;
 }
 
 /**
@@ -924,7 +945,7 @@ textarea {
 }
 
 .entry-content p {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 1em 0;
 }
 
 .entry-content tt,
@@ -984,7 +1005,7 @@ textarea {
 .nav-links a,
 .nav-links > span {
   background: #fff;
-  padding: 0.5em 1em;
+  padding: 1em 1.5em;
   display: inline-block;
   font-size: 1em;
   text-decoration: none;
@@ -995,6 +1016,10 @@ textarea {
 .nav-links > span.current {
   color: #fff;
   background: #5a4ef8;
+}
+
+.nav-links a:hover .link-caption {
+  color: #fff;
 }
 
 .nav-links .next i {
@@ -1084,16 +1109,22 @@ textarea {
 }
 
 .site-footer {
-  margin-top: 3em;
   background: #fff;
   padding: 1em 0;
   text-align: center;
-  font-size: 0.9rem;
+}
+
+.widget-title {
+  font-size: 1.5rem;
 }
 
 .widget {
   background: #fff;
-  padding: 1rem;
+  padding: 1em 1.5em;
+}
+
+.widget-area {
+  font-size: 1rem;
 }
 
 .widget-area h2 {
@@ -1102,10 +1133,7 @@ textarea {
 
 .widget-area ul {
   padding: 0 0 0 1em;
-}
-
-.widget-area a {
-  font-size: 0.9em;
+  margin: 0;
 }
 
 .widget-area a:hover {
@@ -1125,34 +1153,74 @@ input.search-submit {
 
 .single .entry-header {
   border-bottom: 1px solid #eaeaea;
-  padding-bottom: 1em;
+  padding: 0 0 2em 0;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .single #primary {
+    float: none;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+.single .site-main > article {
+  padding: 2em;
+  margin-bottom: 2em;
 }
 
 /**
  * Comments
  */
 .comments-area {
-  margin-top: 2em;
-  padding-top: 2em;
-  border-top: 1px solid #eaeaea;
+  margin: 2em 0 0 0;
+  padding: 0;
 }
 
-.custom-background .comments-area {
+.comments-title {
+  margin-bottom: 0.5em;
   background: #fff;
-  padding: 1em 1em 0.5em 1em;
+  padding: 0.5em 1em;
+}
+
+.pingback {
+  background: white;
+  padding: 0 1.5em 0.5em;
+  list-style-type: none;
+  font-size: 1rem;
+}
+
+.pingback:first-child {
+  padding-top: 1em;
 }
 
 .comment {
   list-style: none;
-  margin-bottom: 1.5em;
+  margin-bottom: 1em;
+}
+
+.comment > article {
+  background: #fff;
+  padding: 1.5em;
 }
 
 .comment ol.children {
   margin: 1em 0 0 0;
 }
 
+.comment-respond {
+  background: #fff;
+  padding: 1em 1.5em;
+}
+
 .comment-list {
-  margin: 1.5em 0 2em 0;
+  margin: 0;
+  padding: 0;
+}
+
+.comment-list > .comment {
   padding: 0;
 }
 
@@ -1170,6 +1238,7 @@ input.search-submit {
 }
 
 .comment-metadata {
+  font-weight: 600;
   display: inline-block;
   float: right;
   margin-top: 0.5em;
@@ -1195,6 +1264,29 @@ input.search-submit {
 }
 
 /**
+ * Navigation
+ */
+.link-title {
+  font-size: 1.5rem;
+}
+
+.link-caption {
+  display: block;
+  font-size: 0.9rem;
+  color: #8c8c8c;
+}
+
+/**
+ * Post formats
+ */
+/**
+ * => Password Protected
+ */
+.post-password-form {
+  text-align: center;
+}
+
+/**
  * Page Title
  */
 .page-title i {
@@ -1217,6 +1309,41 @@ input.search-submit {
   transition: all ease-in-out 0.3s;
 }
 
+/**
+ * Temp
+ */
+/*.site-content {
+	padding: 0 1em;
+}
+#secondary-left {
+    width: 20%;
+    float: left;
+    padding-right: 30px;
+}
+#secondary-right {
+    float: left;
+    padding-left: 30px;
+    width: 25%;
+}
+#primary {
+    width: 100%;
+    float: none;
+    width: 55%;
+    float: left;
+    padding: 0;
+}
+.widget-area,.widget-area a, .widget-area p {
+    font-size: 1rem;
+}
+.widget {
+    padding: 1em 1.5em;
+}
+.widget-title {
+    font-size: 1.5rem;
+}
+.entry-content {
+    font-size: 1.1rem;
+}*/
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/

@@ -30,21 +30,15 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
-body,
-button,
-input,
-select,
-textarea {
+body {
     font-size: 1.2rem;
 }
 
-ul {
-    margin: 0;
-}
-
-table, td, th {
+table,
+td,
+th {
     border: 1px solid #eaeaea;
-    padding: 0.5em 1em;
+    padding: 0.3em;
 }
 
 button,
@@ -57,6 +51,7 @@ input[type="submit"] {
     background: #5a4ef8;
     text-shadow: none;
     color: #fff;
+    line-height: normal;
     padding: 1em 2em;
 }
 
@@ -77,24 +72,47 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
     border-radius: 0;
-    padding: 0.5em 1em;
+    line-height: normal;
+    padding: 1em;
 }
 
 /**
  * Layout
  */
 @media ( min-width: 768px ) {
-	#primary {
-	    float: left;
-	    width: 70%;
-	    padding-right: 1em;
-	}
 
-	#secondary {
-	    float: right;
-	    width: 30%;
-	    padding-left: 1em;
-	}
+    #secondary-left {
+	    float: left;
+        width: 30%;
+
+        .blog &,
+        .archive & {
+            width: 20%;
+        }
+    }
+
+    #primary {
+        float: left;
+        width: 70%;
+        padding-right: 0.5em;
+
+        .blog &,
+        .archive & {
+            padding: 0 1em;
+            width: 60%;
+        }
+    }
+
+    #secondary-right {
+        float: right;
+        width: 30%;
+        padding-left: 0.5em;
+
+        .blog &,
+        .archive & {
+            width: 20%;
+        }
+    }
 }
 
 /**
@@ -102,24 +120,25 @@ textarea {
  */
 
 .site-content {
-    max-width: 1300px;
-    margin: 3em auto 0 auto;
-    padding: 0 50px;
+    margin: 3em auto 3em auto;
+    padding: 0 2em;
 
     @media ( max-width: 768px ) {
         padding: 0 2em;
     }
+}
 
-	article {
-	    background: #fff;
-	    padding: 1em 1.5em;
-	}
+.site-main > article {
+    background: #fff;
+    padding: 1em 1.5em;
+    margin-bottom: 1em;
 }
 
 /**
  * Page Title & Page Header
  */
 .page-title {
+    font-size: 2.2rem;
     img {
         vertical-align: -0.5em;
         margin-right: 0.5em;
@@ -138,18 +157,23 @@ textarea {
 	}
 }
 
-
+.archive-description {
+    margin-top: 0.5em;
+}
 
 /**
  * Entry Title
  */
 .entry-title,
 .entry-title a {
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-transform: none;
     text-decoration: none;
     color: #32373c;
-    margin: 0 0 0.3em 0;
+    margin: 0 0 0.5em 0;
+    .single & {
+        font-size: 2.5rem;
+    }
 }
 
 /**
@@ -159,7 +183,7 @@ textarea {
 	line-height: 2;
 
 	p {
-	    margin: 0 0 0.5rem 0;
+	    margin: 0 0 1em 0;
 	}
 
 	tt,
@@ -220,7 +244,7 @@ textarea {
     a,
     > span {
         background: #fff;
-        padding: 0.5em 1em;
+        padding: 1em 1.5em;
         display: inline-block;
         font-size: 1em;
         text-decoration: none;
@@ -230,6 +254,9 @@ textarea {
             color: #fff;
             background: #5a4ef8;
         }
+    }
+    a:hover .link-caption {
+        color: #fff;
     }
 
     .next i {

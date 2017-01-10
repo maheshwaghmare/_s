@@ -1,4 +1,58 @@
 <?php
+
+/**
+ * Replacement for print_r & var_dump.
+ *
+ * @param mixed $var
+ * @param bool $dump. (default: false)
+ */
+if ( ! function_exists( 'vl' ) ) {
+
+    function vl( $var, $dump = 0 ) {
+        ?>
+
+        <style type="text/css">
+            .vl_pre {
+                text-align: left;
+                margin: 30px 15px;
+                padding: 1em;
+                border: 0px;
+                outline: 0px;
+                font-size: 14px;
+                font-family: monospace;
+                vertical-align: baseline;
+                max-width: 100%;
+                overflow: auto;
+                color: rgb(248,248,242);
+                direction: ltr;
+                word-spacing: normal;
+                line-height: 1.5;
+                border-radius: 0.3em;
+                word-wrap: normal;
+                letter-spacing: 0.266667px;
+                background: rgb(61,69,75);
+            }
+        </style>
+
+        <?php
+        
+        echo "<pre class='vl_pre'><xmp>";
+        if ( true == $dump ) {
+            var_dump( $var );
+        } else {
+
+            if ( is_array( $var ) || is_object( $var ) ) {
+                print_r( $var );
+            } else {
+                echo $var;
+            }
+
+        }
+        echo "</xmp></pre>";
+    }
+    
+}
+
 /**
  * Awesome Blog functions and definitions.
  *
@@ -87,8 +141,17 @@ add_action( 'after_setup_theme', 'awesome_blog_content_width', 0 );
  */
 function awesome_blog_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'awesome-blog' ),
+		'name'          => esc_html__( 'Right Sidebar', 'awesome-blog' ),
 		'id'            => 'sidebar-1',
+		'description'   => esc_html__( 'Add widgets here.', 'awesome-blog' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Left Sidebar', 'awesome-blog' ),
+		'id'            => 'sidebar-2',
 		'description'   => esc_html__( 'Add widgets here.', 'awesome-blog' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</section>',
