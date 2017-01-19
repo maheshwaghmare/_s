@@ -5,266 +5,231 @@ module.exports = function (grunt) {
     var flexibility = require('postcss-flexibility');
 
     grunt.initConfig({
-            pkg: grunt.file.readJSON('package.json'),
+        pkg: grunt.file.readJSON('package.json'),
 
-            rtlcss: {
-                options: {
-                    // rtlcss options
-                    config: {
-                        preserveComments: true,
-                        greedy: true
-                    },
-                    // generate source maps
-                    map: false
+        rtlcss: {
+            options: {
+                // rtlcss options
+                config: {
+                    preserveComments: true,
+                    greedy: true
                 },
-                dist: {
-                    files: [
-                         {
-                            expand: true,
-                            cwd: 'assets/css/unminified/',
-                            src: [
-                                    '*.css',
-                                    '!*-rtl.css',
-                                    '!customizer-controls.css',
-                                    '!font-awesome.css',
-                                    '!font-awesome.css',
-                                ],
-                            dest: 'assets/css/unminified', 
-                            ext: '-rtl.css'
-                            
-                        },
-                    ]
-                }/*
-                'default': {
-                    
-                    files: {
-                        'assets/css/unminified/rtl.css': [
-                            'assets/css/unminified/style.css'
-                        ]
-                    }
-                }*/
+                // generate source maps
+                map: false
             },
-
-            sass: {
-                options: {
-                    sourcemap: 'none',
-                    outputStyle: 'expanded'
-                },
-                dist: {
-                    files: [
-                        {
-                        'style.css': 'assets/sass/style.scss'
-                        },
-                        /* Common Style */
-                        // {
-                        //     expand: true,
-                        //     cwd: 'sass/',
-                        //     src: ['style.scss'],
-                        //     dest: 'assets/css/unminified', 
-                        //     ext: '.css'
-                            
-                        // },
-                        // /* Header Layouts */
-                        // {
-                        //     expand: true,
-                        //     cwd: 'sass/site/header/header-layouts/',
-                        //     src: ['**.scss'],
-                        //     dest: 'assets/css/unminified', 
-                        //     ext: '.css'
-                            
-                        // },
-                        // /* Blog Layouts */
-                        // {
-                        //     expand: true,
-                        //     cwd: 'sass/site/blog/blog-layouts/blog-styles/',
-                        //     src: ['**.scss'],
-                        //     dest: 'assets/css/unminified', 
-                        //     ext: '.css'
-                            
-                        // },
-                        // /* Single Blog Post Single Layouts */
-                        // {
-                        //     expand: true,
-                        //     cwd: 'sass/site/blog/single-post-layouts/single-post-styles/',
-                        //     src: ['**.scss'],
-                        //     dest: 'assets/css/unminified', 
-                        //     ext: '.css'
-                        // },
-                        // /* Small Footer Layouts */
-                        // {
-                        //     expand: true,
-                        //     cwd: 'sass/site/footer/small-footer/',
-                        //     src: ['**.scss'],
-                        //     dest: 'assets/css/unminified', 
-                        //     ext: '.css'
-                        // },
-
-                    ]
-                }
-            },
-
-            postcss: {
-                options: {
-                    map: false,
-                    processors: [
-                        flexibility,
-                        autoprefixer({
-                            browsers: [
-                                'Android >= 2.1',
-                                'Chrome >= 21',
-                                'Edge >= 12',
-                                'Explorer >= 7',
-                                'Firefox >= 17',
-                                'Opera >= 12.1',
-                                'Safari >= 6.0'
+            dist: {
+                files: [
+                     {
+                        expand: true,
+                        cwd: 'assets/unminified/css/',
+                        src: [
+                                '*.css',
+                                '!*-rtl.css',
+                                '!customizer-controls.css',
+                                '!font-awesome.css',
                             ],
-                            cascade: false
-                        })
-                    ]
-                },
-                style: {
-                    expand: true,
-                    src: [
+                        dest: 'assets/unminified/css', 
+                        ext: '-rtl.css'
+                        
+                    },
+                ]
+            }/*
+            'default': {
+                
+                files: {
+                    'assets/css/unminified/rtl.css': [
                         'assets/css/unminified/style.css'
                     ]
                 }
-            },
+            }*/
+        },
 
-            uglify: {
-                js: {
-                    files: [{ // all .js to min.js
-                        expand: true,
-                        src: [
-                            '**.js'
-                        ],
-                        dest: 'assets/js/minified',
-                        cwd: 'assets/js/unminified',
-                        ext: '.min.js'
-                    }, { // all .js to .astra.min.js
-                        src: [
-                            'assets/js/unminified/ast-masonry.js',
-                            'assets/js/unminified/**.js',
-                            '!assets/js/unminified/customizer-controls-toggle.js',
-                            '!assets/js/unminified/customizer-controls.js',
-                            '!assets/js/unminified/customizer-preview.js',
-                        ],
-                        dest: 'assets/js/minified/astra.min.js',
-                        // cwd: 'assets/js/unminified/',
+        sass: {
+            options: {
+                sourcemap: 'none',
+                outputStyle: 'expanded'
+            },
+            dist: {
+                files: [
+                    {
+                        'style.css': 'assets/unminified/sass/style.scss'
                     },
-                    ]
-                }
-            },
-
-            cssmin: {
-                options: {
-                    keepSpecialComments: 0
-                },
-                css: {
-                    files: [{ //.css to min.css
-                        expand: true,
-                        src: [
-                            '**/*.css'
-                        ],
-                        dest: 'assets/css/minified',
-                        cwd: 'assets/css/unminified',
-                        ext: '.min.css'
-                    }, { // .css to ultimate.min.css
-                        src: [
-                            'style.css'
-                        ],
-                        dest: 'assets/css/minified/style.min.css'
-                    }, { // .css to ultimate.min.css
-                        src: [
-                            'style.css',
-                            'assets/css/unminified/*.css'
-                        ],
-                        dest: 'assets/css/minified/astra.min.css'
-                    }]
-                }
-            },
-
-            copy: {
-                main: {
-                    options: {
-                        mode: true
+                    {
+                        'assets/unminified/css/editor-style.css': 'assets/unminified/sass/editor-style.scss'
                     },
+                    // /* Small Footer Layouts */
+                    // {
+                    //     expand: true,
+                    //     cwd: 'sass/site/footer/small-footer/',
+                    //     src: ['**.scss'],
+                    //     dest: 'assets/css/unminified', 
+                    //     ext: '.css'
+                    // },
+
+                ]
+            }
+        },
+
+        postcss: {
+            options: {
+                map: false,
+                processors: [
+                    flexibility,
+                    autoprefixer({
+                        browsers: [
+                            'Android >= 2.1',
+                            'Chrome >= 21',
+                            'Edge >= 12',
+                            'Explorer >= 7',
+                            'Firefox >= 17',
+                            'Opera >= 12.1',
+                            'Safari >= 6.0'
+                        ],
+                        cascade: false
+                    })
+                ]
+            },
+            style: {
+                expand: true,
+                src: [
+                    'assets/unminified/css/style.css'
+                ]
+            }
+        },
+
+        uglify: {
+            js: {
+                files: [{ // all .js to min.js
+                    expand: true,
                     src: [
-                        '**',
-                        '!style - Copy.css',
-                        '!node_modules/**',
-                        '!build/**',
-                        '!css/sourcemap/**',
-                        '!.git/**',
-                        '!bin/**',
-                        '!.gitlab-ci.yml',
-                        '!bin/**',
-                        '!tests/**',
-                        '!phpunit.xml.dist',
-                        '!*.sh',
-                        '!*.map',
-                        '!Gruntfile.js',
-                        '!package.json',
-                        '!.gitignore',
-                        '!phpunit.xml',
-                        '!README.md',
-                        '!sass/**',
-                        '!codesniffer.ruleset.xml',
+                        '**.js'
                     ],
-                    dest: 'awesome-blog/'
-                }
-            },
+                    dest: 'assets/minified/js',
+                    cwd: 'assets/unminified/js',
+                    ext: '.min.js'
+                }, { // all .js to .bhari.min.js
+                    src: [
+                        'assets/unminified/js/**.js',
 
-            compress: {
-                main: {
-                    options: {
-                        archive: 'awesome-blog.zip',
-                        mode: 'zip'
-                    },
-                    files: [
-                        {
-                            src: [
-                                './awesome-blog/**'
-                            ]
-
-                        }
-                    ]
-                }
-            },
-
-            clean: {
-                main: ["awesome-blog"],
-                zip: ["awesome-blog.zip"]
-
-            },
-
-            makepot: {
-                target: {
-                    options: {
-                        domainPath: '/',
-                        potFilename: 'languages/astra.pot',
-                        potHeaders: {
-                            poedit: true,
-                            'x-poedit-keywordslist': true
-                        },
-                        type: 'wp-theme',
-                        updateTimestamp: true
-                    }
-                }
-            },
-            
-            addtextdomain: {
-                options: {
-                    textdomain: 'ast',
+                        //  Avoid customizer files
+                        '!assets/unminified/js/customizer.js',
+                        '!assets/unminified/js/customizer-preview.js',
+                    ],
+                    dest: 'assets/minified/js/bhari.min.js',
+                    // cwd: 'assets/unminified/js/',
                 },
-                target: {
-                    files: {
-                        src: ['*.php', '**/*.php', '!node_modules/**', '!php-tests/**', '!bin/**', '!admin/bsf-core/**']
+                ]
+            }
+        },
+
+        cssmin: {
+            options: {
+                keepSpecialComments: 0
+            },
+            css: {
+                files: [{ //.css to min.css
+                    expand: true,
+                    src: [
+                        '**/*.css'
+                    ],
+                    dest: 'assets/minified/css',
+                    cwd: 'assets/unminified/css',
+                    ext: '.min.css'
+                }, { // .css to ultimate.min.css
+                    src: [
+                        'style.css'
+                    ],
+                    dest: 'assets/minified/css/style.min.css'
+                }]
+            }
+        },
+
+        copy: {
+            main: {
+                options: {
+                    mode: true
+                },
+                src: [
+                    '**',
+                    '!style - Copy.css',
+                    '!node_modules/**',
+                    '!build/**',
+                    '!css/sourcemap/**',
+                    '!.git/**',
+                    '!bin/**',
+                    '!.gitlab-ci.yml',
+                    '!bin/**',
+                    '!tests/**',
+                    '!phpunit.xml.dist',
+                    '!*.sh',
+                    '!*.map',
+                    '!Gruntfile.js',
+                    '!package.json',
+                    '!.gitignore',
+                    '!phpunit.xml',
+                    '!README.md',
+                    '!codesniffer.ruleset.xml',
+                ],
+                dest: 'bhari/'
+            }
+        },
+
+        compress: {
+            main: {
+                options: {
+                    archive: 'bhari.zip',
+                    mode: 'zip'
+                },
+                files: [
+                    {
+                        src: [
+                            './bhari/**'
+                        ]
+
                     }
+                ]
+            }
+        },
+
+        clean: {
+            main: ["bhari"],
+            zip: ["bhari.zip"]
+
+        },
+
+        makepot: {
+            target: {
+                options: {
+                    domainPath: '/',
+                    potFilename: 'languages/bhari.pot',
+                    potHeaders: {
+                        poedit: true,
+                        'x-poedit-keywordslist': true
+                    },
+                    type: 'wp-theme',
+                    updateTimestamp: true
                 }
             }
-
+        },
+        
+        addtextdomain: {
+            options: {
+                textdomain: 'bhari',
+            },
+            target: {
+                files: {
+                    src: [
+                        '*.php',
+                        '**/*.php',
+                        '!node_modules/**',
+                        '!php-tests/**',
+                        '!bin/**',
+                        '!admin/bsf-core/**'
+                    ]
+                }
+            }
         }
-    );
+    });
 
     // Load grunt tasks
     grunt.loadNpmTasks('grunt-rtlcss');

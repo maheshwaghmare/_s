@@ -9,7 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Awesome_Blog
+ * @package Bhari
  */
 
 get_header(); ?>
@@ -34,5 +34,7 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar( 'right' );
+
+bhari_get_sidebar_page();
+
 get_footer();

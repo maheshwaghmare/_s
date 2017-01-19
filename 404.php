@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Creating_an_Error_404_Page
  *
- * @package Awesome_Blog
+ * @package Bhari
  */
 
 get_header(); ?>
@@ -14,12 +14,12 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title"><i class="fa fa-window-close-o"></i> <?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'awesome-blog' ); ?></h1>
+					<h1 class="page-title"><i class="fa fa-window-close-o"></i> <?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'bhari' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
 
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'awesome-blog' ); ?></p>
+					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'bhari' ); ?></p>
 
 					<?php get_search_form(); ?>
 
@@ -30,5 +30,7 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar( 'right' );
+
+bhari_get_sidebar_page();
+
 get_footer();

@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package Awesome_Blog
+ * @package Bhari
  */
 
 get_header(); ?>
@@ -16,7 +16,7 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><i class="fa fa-search"></i> <?php printf( esc_html__( 'Search Results for: %s', 'awesome-blog' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-title"><i class="fa fa-search"></i> <?php printf( esc_html__( 'Search Results for: %s', 'bhari' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<?php
@@ -44,5 +44,7 @@ get_header(); ?>
 	</section><!-- #primary -->
 
 <?php
-get_sidebar( 'right' );
+
+bhari_get_sidebar_page();
+
 get_footer();

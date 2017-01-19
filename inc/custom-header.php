@@ -12,33 +12,33 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/custom-headers/
  *
- * @package Awesome_Blog
+ * @package Bhari
  */
 
 /**
  * Set up the WordPress core custom header feature.
  *
- * @uses awesome_blog_header_style()
+ * @uses bhari_header_style()
  */
-function awesome_blog_custom_header_setup() {
-	add_theme_support( 'custom-header', apply_filters( 'awesome_blog_custom_header_args', array(
+function bhari_custom_header_setup() {
+	add_theme_support( 'custom-header', apply_filters( 'bhari_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
-		'width'                  => 1200,
+		'width'                  => 1100,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'awesome_blog_header_style',
+		'wp-head-callback'       => 'bhari_header_style',
 	) ) );
 }
-add_action( 'after_setup_theme', 'awesome_blog_custom_header_setup' );
+add_action( 'after_setup_theme', 'bhari_custom_header_setup' );
 
-if ( ! function_exists( 'awesome_blog_header_style' ) ) :
+if ( ! function_exists( 'bhari_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog.
  *
- * @see awesome_blog_custom_header_setup().
+ * @see bhari_custom_header_setup().
  */
-function awesome_blog_header_style() {
+function bhari_header_style() {
 	$header_text_color = get_header_textcolor();
 
 	/*

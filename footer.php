@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Awesome_Blog
+ * @package Bhari
  */
 
 ?>
@@ -15,9 +15,9 @@
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'awesome-blog' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'awesome-blog' ), 'WordPress' ); ?></a>
+			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'bhari' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'bhari' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'awesome-blog' ), 'Awesome Blog', '<a href="http://maheshwaghmare.wordpress.com/" rel="designer">Mahesh M. Waghmare</a>' ); ?>
+			<?php printf( esc_html__( 'Theme: %1$s', 'bhari' ), '<a href="http://maheshwaghmare.wordpress.com/" rel="designer">Bhari</a>' ); ?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->

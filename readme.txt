@@ -1,7 +1,7 @@
-=== Awesome Blog ===
+=== Bhari ===
 
-Contributors: automattic
-Tags: translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
+Contributors: Mahesh901122
+Tags: one-column, two-columns, three-columns, right-sidebar, left-sidebar, blog, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, featured-images, theme-options, post-formats
 
 Requires at least: 4.0
 Tested up to: 4.5.3
@@ -9,11 +9,11 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A starter theme called Awesome Blog, or underscores.
+A starter theme called Bhari, or underscores.
 
 == Description ==
 
-Hi. I'm a starter theme called Awesome Blog, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+Hi. I'm a starter theme called Bhari, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
 == Installation ==
 
@@ -25,7 +25,7 @@ Hi. I'm a starter theme called Awesome Blog, or underscores, if you like. I'm a 
 
 = Does this theme support any plugins? =
 
-Awesome Blog includes support for Infinite Scroll in Jetpack.
+Bhari includes support for Infinite Scroll in Jetpack.
 
 == Changelog ==
 

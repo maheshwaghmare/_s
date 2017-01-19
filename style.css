@@ -1,19 +1,19 @@
 /*!
-Theme Name: Awesome Blog
+Theme Name: Bhari
 Theme URI: http://underscores.me/
 Author: Mahesh M. Waghmare
-Author URI: http://maheshwaghmare.wordpress.com/
-Description: Simple Awesome Theme for Bloggers
+Author URI: https://maheshwaghmare.wordpress.com/
+Description: Simple Awesome Theme for Bloggers.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: awesome-blog
-Tags:
+Text Domain: bhari
+Tags: one-column, two-columns, three-columns, right-sidebar, left-sidebar, blog, custom-header, custom-background, custom-menu, custom-colors, sticky-post, threaded-comments, translation-ready, featured-images, theme-options, post-formats
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
-Awesome Blog is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Bhari is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
@@ -41,6 +41,12 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
+/**
+ * Colors
+ */
+/**
+ * Spacing
+ */
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
@@ -88,6 +94,8 @@ template {
 }
 
 a {
+  transition: all ease-in-out 0.2s;
+  text-decoration: none;
   background-color: transparent;
 }
 
@@ -193,6 +201,29 @@ input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
   cursor: pointer;
+  border: none;
+  border-radius: 0;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  border-radius: 0;
+  line-height: normal;
+  padding: 1em;
 }
 
 button[disabled],
@@ -264,14 +295,14 @@ input,
 select,
 textarea {
   color: #404040;
-  font-family: sans-serif;
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   line-height: 1.5;
 }
 
 h1, h2, h3, h4, h5, h6 {
   clear: both;
+  margin: 0;
 }
 
 p {
@@ -283,7 +314,9 @@ dfn, cite, em, i {
 }
 
 blockquote {
-  margin: 0 1.5em;
+  border-left: 5px solid #eaeaea;
+  padding: 0.5em 2em;
+  margin: 0 1.5em 1em 1.5em;
 }
 
 address {
@@ -291,7 +324,7 @@ address {
 }
 
 pre {
-  background: #eee;
+  background: #f1f1f1;
   font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
   font-size: 0.9375rem;
@@ -331,6 +364,12 @@ html {
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  html {
+    font-size: 85%;
+  }
+}
+
 *,
 *:before,
 *:after {
@@ -339,7 +378,8 @@ html {
 }
 
 body {
-  background: #fff;
+  font-size: 20px;
+  background: #f1f1f1;
   /* Fallback for when there is no custom background color defined. */
 }
 
@@ -369,14 +409,14 @@ q:before {
 }
 
 hr {
-  background-color: #ccc;
+  background-color: #eaeaea;
   border: 0;
   height: 1px;
   margin-bottom: 1.5em;
 }
 
 ul, ol {
-  margin: 0 0 1.5em 3em;
+  margin: 0;
 }
 
 ul {
@@ -418,6 +458,13 @@ table {
   width: 100%;
 }
 
+table,
+td,
+th {
+  border: 1px solid #eaeaea;
+  padding: 0.3em;
+}
+
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
@@ -425,22 +472,19 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
-  border-radius: 3px;
-  background: #e6e6e6;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 16px;
-  font-size: 1rem;
-  padding: .6em 1em .4em;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  -webkit-appearance: button;
+  line-height: normal;
+  padding: 1em 2em;
+  border-color: #34495e;
+  background: #34495e;
+  color: #fff;
 }
 
 button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover {
-  border-color: #ccc #bbb #aaa;
+  border-color: #34495e;
 }
 
 button:active, button:focus,
@@ -450,7 +494,7 @@ input[type="reset"]:active,
 input[type="reset"]:focus,
 input[type="submit"]:active,
 input[type="submit"]:focus {
-  border-color: #aaa #bbb #bbb;
+  border-color: #34495e;
 }
 
 input[type="text"],
@@ -470,9 +514,7 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
   color: #666;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 3px;
+  border: 1px solid #eaeaea;
 }
 
 input[type="text"]:focus,
@@ -495,7 +537,7 @@ textarea:focus {
 }
 
 select {
-  border: 1px solid #ccc;
+  border: 1px solid #eaeaea;
 }
 
 textarea {
@@ -509,15 +551,15 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-  color: royalblue;
+  color: #34495e;
 }
 
 a:visited {
-  color: purple;
+  color: #34495e;
 }
 
 a:hover, a:focus, a:active {
-  color: midnightblue;
+  color: #34495e;
 }
 
 a:focus {
@@ -534,8 +576,8 @@ a:hover, a:active {
 .main-navigation {
   clear: both;
   display: block;
-  float: left;
   width: 100%;
+  text-align: center;
 }
 
 .main-navigation ul {
@@ -545,26 +587,24 @@ a:hover, a:active {
   padding-left: 0;
 }
 
-.main-navigation ul ul {
-  float: left;
-  position: absolute;
-  top: 1.5em;
-  left: -999em;
-  z-index: 99999;
-}
-
-.main-navigation ul ul ul {
-  left: -999em;
-  top: 0;
-}
-
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-  left: 100%;
-}
-
-.main-navigation ul ul a {
-  width: 200px;
+@media screen and (min-width: 768px) {
+  .main-navigation ul ul {
+    float: left;
+    position: absolute;
+    left: -999em;
+    z-index: 99999;
+  }
+  .main-navigation ul ul ul {
+    left: -999em;
+    top: 0;
+  }
+  .main-navigation ul ul li:hover > ul,
+  .main-navigation ul ul li.focus > ul {
+    left: 100%;
+  }
+  .main-navigation ul ul a {
+    width: 200px;
+  }
 }
 
 .main-navigation ul li:hover > ul,
@@ -573,7 +613,6 @@ a:hover, a:active {
 }
 
 .main-navigation li {
-  float: left;
   position: relative;
 }
 
@@ -710,12 +749,50 @@ a:hover, a:active {
 # Widgets
 --------------------------------------------------------------*/
 .widget {
+  background: #fff;
+  padding: 1.5em;
   margin: 0 0 1.5em;
   /* Make sure select elements fit in widgets. */
 }
 
 .widget select {
   max-width: 100%;
+}
+
+.widget-title {
+  font-size: 1.5rem;
+}
+
+.widget-area {
+  font-size: 1rem;
+}
+
+.widget-area h2 {
+  margin: 0 0 1em 0;
+}
+
+.widget-area ul {
+  padding: 0 0 0 1em;
+  margin: 0;
+}
+
+.widget-area a:hover {
+  box-shadow: 0px 2px 0px 0px #34495e;
+}
+
+input.search-submit {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  padding: 1em;
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-form .search-field {
+  width: 100%;
 }
 
 /*--------------------------------------------------------------
@@ -760,116 +837,96 @@ a:hover, a:active {
   display: block;
 }
 
+/*--------------------------------------------------------------
+## Site Customization
+--------------------------------------------------------------*/
 /**
- * Site Customization
- */
-/**
- * Colors
- */
-a,
-a:visited {
-  color: #5a4ef8;
-}
-
-a {
-  transition: all ease-in-out 0.2s;
-  text-decoration: none;
-}
-
-blockquote {
-  border-left: 5px solid #eaeaea;
-  padding: 0.5em 2em;
-  margin: 0 1.5em 1em 1.5em;
-}
-
-/**
- * Reset Tags
- */
-body {
-  background: #f1f1f1;
-  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-}
-
-body {
-  font-size: 1.2rem;
-}
-
-table,
-td,
-th {
-  border: 1px solid #eaeaea;
-  padding: 0.3em;
-}
-
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  background: #5a4ef8;
-  text-shadow: none;
-  color: #fff;
-  line-height: normal;
-  padding: 1em 2em;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-  border-radius: 0;
-  line-height: normal;
-  padding: 1em;
-}
-
-/**
- * Layout
+ * Sidebar Layout's
+ *
+ * => Contents
+ *
+ * .layout-no-sidebar
+ * .layout-sidebar-content
+ * .layout-content-sidebar
+ * .layout-content-sidebar-sidebar
+ * .layout-sidebar-content-sidebar
+ * .layout-sidebar-sidebar-content
  */
 @media (min-width: 768px) {
-  #secondary-left {
+  #primary,
+  #secondary-left,
+  #secondary-right {
     float: left;
-    width: 30%;
+    position: relative;
   }
-  .blog #secondary-left,
-  .archive #secondary-left {
-    width: 20%;
+  .layout-no-sidebar #primary, .layout-no-sidebar
+  #secondary-left, .layout-no-sidebar
+  #secondary-right {
+    float: none;
   }
-  #primary {
-    float: left;
+  .layout-content-sidebar #primary {
     width: 70%;
     padding-right: 0.5em;
   }
-  .blog #primary,
-  .archive #primary {
-    padding: 0 1em;
-    width: 60%;
-  }
-  #secondary-right {
-    float: right;
+  .layout-content-sidebar #secondary-left,
+  .layout-content-sidebar #secondary-right {
     width: 30%;
     padding-left: 0.5em;
   }
-  .blog #secondary-right,
-  .archive #secondary-right {
-    width: 20%;
+  .layout-sidebar-content #primary {
+    width: 70%;
+    left: 30%;
+    padding-left: 0.5em;
+  }
+  .layout-sidebar-content #secondary-right,
+  .layout-sidebar-content #secondary-right {
+    width: 30%;
+    left: -70%;
+    padding-right: 0.5em;
+  }
+  .layout-sidebar-sidebar-content #primary {
+    width: 50%;
+    left: 50%;
+    padding-left: 0.5em;
+  }
+  .layout-sidebar-sidebar-content #secondary-left {
+    width: 25%;
+    left: -50%;
+    padding-right: 0.5em;
+  }
+  .layout-sidebar-sidebar-content #secondary-right {
+    width: 25%;
+    left: -50%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  .layout-sidebar-content-sidebar #primary {
+    width: 50%;
+    left: 25%;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+  }
+  .layout-sidebar-content-sidebar #secondary-left {
+    width: 25%;
+    left: -50%;
+    padding-right: 0.5em;
+  }
+  .layout-sidebar-content-sidebar #secondary-right {
+    width: 25%;
+    padding-left: 0.5em;
+  }
+  .layout-content-sidebar-sidebar #primary {
+    width: 50%;
+    padding-right: 0.5em;
+  }
+  .layout-content-sidebar-sidebar #secondary-left {
+    width: 25%;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  .layout-content-sidebar-sidebar #secondary-right {
+    width: 25%;
+    padding-left: 0.5em;
   }
 }
 
@@ -877,8 +934,9 @@ textarea {
  * Site Content
  */
 .site-content {
+  position: relative;
+  word-wrap: break-word;
   margin: 3em auto 3em auto;
-  padding: 0 2em;
 }
 
 @media (max-width: 768px) {
@@ -950,9 +1008,9 @@ textarea {
 
 .entry-content tt,
 .entry-content code {
+  background: #fffffc;
   border: 1px solid #EEE;
   border-radius: 3px;
-  background: #fffffc;
   display: inline-block;
   padding: 3px 5px;
   max-width: 100%;
@@ -980,7 +1038,7 @@ textarea {
  * Entry Meta
  */
 .entry-meta {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 
 .entry-meta i,
@@ -989,7 +1047,7 @@ textarea {
 }
 
 .entry-meta > span {
-  margin-right: 0.5em;
+  margin-right: 1em;
 }
 
 .entry-meta i {
@@ -997,9 +1055,16 @@ textarea {
 }
 
 .byline img {
-  vertical-align: -0.5em;
+  vertical-align: middle;
   margin-right: 0.5em;
   border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    text-align: center;
+    margin-bottom: 1em;
+  }
 }
 
 .nav-links a,
@@ -1015,11 +1080,17 @@ textarea {
 .nav-links > span:hover,
 .nav-links > span.current {
   color: #fff;
-  background: #5a4ef8;
+  background: #34495e;
 }
 
 .nav-links a:hover .link-caption {
   color: #fff;
+}
+
+.nav-links .next,
+.nav-links .prev {
+  color: #fff;
+  background: #34495e;
 }
 
 .nav-links .next i {
@@ -1079,24 +1150,36 @@ textarea {
   color: #404040;
 }
 
-.main-navigation {
-  text-align: center;
-  float: none;
-}
-
-.main-navigation li {
-  float: none;
+.menu-item-has-children:after {
+  content: "\f107";
   display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  right: 0;
+  top: 0.7em;
 }
 
-.main-navigation ul ul {
-  background: #fff;
-  padding: 1em;
-}
-
-.main-navigation ul ul li {
-  text-align: left;
-  font-size: 0.9rem;
+@media all and (min-width: 768px) {
+  .main-navigation {
+    text-align: center;
+    float: none;
+  }
+  .main-navigation li {
+    float: none;
+    display: inline-block;
+  }
+  .main-navigation ul ul {
+    background: #fff;
+    padding: 1em;
+  }
+  .main-navigation ul ul li {
+    text-align: left;
+    font-size: 0.9rem;
+  }
 }
 
 /**
@@ -1109,46 +1192,10 @@ textarea {
 }
 
 .site-footer {
+  font-size: 1rem;
   background: #fff;
   padding: 1em 0;
   text-align: center;
-}
-
-.widget-title {
-  font-size: 1.5rem;
-}
-
-.widget {
-  background: #fff;
-  padding: 1em 1.5em;
-}
-
-.widget-area {
-  font-size: 1rem;
-}
-
-.widget-area h2 {
-  margin: 0 0 0.5em 0;
-}
-
-.widget-area ul {
-  padding: 0 0 0 1em;
-  margin: 0;
-}
-
-.widget-area a:hover {
-  box-shadow: 0px 2px 0px 0px #5a4ef5;
-}
-
-input.search-submit {
-  display: inline-block;
-  padding: 0.7em 0.8em;
-  line-height: normal;
-  margin-top: 0.5em;
-}
-
-.search-form .search-field {
-  width: 100%;
 }
 
 .single .entry-header {
@@ -1157,13 +1204,8 @@ input.search-submit {
   text-align: center;
 }
 
-@media (min-width: 768px) {
-  .single #primary {
-    float: none;
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-  }
+.single .entry-header .wp-post-image {
+  margin-bottom: 1em;
 }
 
 .single .site-main > article {
@@ -1254,6 +1296,21 @@ input.search-submit {
   margin-right: 0.5em;
 }
 
+.comment-form-author,
+.comment-form-url,
+.comment-form-email {
+  width: 33.33%;
+  display: inline-block;
+  float: left;
+}
+
+.comment-form-author label,
+.comment-form-url label,
+.comment-form-email label {
+  width: 100%;
+  display: inline-block;
+}
+
 /**
  * Page Content
  */
@@ -1276,9 +1333,6 @@ input.search-submit {
   color: #8c8c8c;
 }
 
-/**
- * Post formats
- */
 /**
  * => Password Protected
  */
@@ -1309,41 +1363,6 @@ input.search-submit {
   transition: all ease-in-out 0.3s;
 }
 
-/**
- * Temp
- */
-/*.site-content {
-	padding: 0 1em;
-}
-#secondary-left {
-    width: 20%;
-    float: left;
-    padding-right: 30px;
-}
-#secondary-right {
-    float: left;
-    padding-left: 30px;
-    width: 25%;
-}
-#primary {
-    width: 100%;
-    float: none;
-    width: 55%;
-    float: left;
-    padding: 0;
-}
-.widget-area,.widget-area a, .widget-area p {
-    font-size: 1rem;
-}
-.widget {
-    padding: 1em 1.5em;
-}
-.widget-title {
-    font-size: 1.5rem;
-}
-.entry-content {
-    font-size: 1.1rem;
-}*/
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/

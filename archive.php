@@ -4,11 +4,10 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package Awesome_Blog
+ * @package Bhari
  */
 
-get_header();
-get_sidebar( 'left' ); ?>
+get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -48,8 +47,8 @@ get_sidebar( 'left' ); ?>
 
 			the_posts_pagination( array(
 				'mid_size'  => 4,
-				'prev_text' => __( '<i class="fa fa-angle-left"></i> Previous', 'awesome-blog' ),
-				'next_text' => __( 'Next <i class="fa fa-angle-right"></i>', 'awesome-blog' ),
+				'prev_text' => __( '<i class="fa fa-angle-left"></i> Previous', 'bhari' ),
+				'next_text' => __( 'Next <i class="fa fa-angle-right"></i>', 'bhari' ),
 			) );
 
 		else :
@@ -62,5 +61,7 @@ get_sidebar( 'left' ); ?>
 	</div><!-- #primary -->
 
 <?php
-get_sidebar( 'right' );
+
+bhari_get_sidebar_archive();
+
 get_footer();

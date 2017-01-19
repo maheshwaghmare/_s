@@ -1,0 +1,66 @@
+.customize-control-bhari-range-slider .bhari-control-slider-input {
+	max-width: 60px;
+    font-size: 12px;
+    text-align: center;
+    height: auto;
+    padding: 2px 0px;
+}
+
+.customize-control-bhari-range-slider .value {
+	display: inline-block;
+	float: right;
+	width: 40%;
+	text-align: right;
+}
+
+.customize-control-bhari-range-slider .slider {
+	margin-top: 0.5em;
+}
+
+.customize-control-bhari-range-slider .customize-control-title {
+    margin: 0;
+    display: inline-block;
+}
+
+.customize-control-bhari-range-slider label > p {
+    margin-bottom: 0;
+}
+
+.customize-control-bhari-range-slider .show-reset {
+	width: 90%;
+	float: left;
+}
+
+.customize-control-bhari-range-slider .unit {
+	background: #FAFAFA;
+	line-height: 18px;
+	display: inline-block;
+	padding: 2px 5px;
+	font-style: normal;
+	border-right: 1px solid #DDD;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+	font-size: 12px;
+}
+
+.bhari-control-slider-default-val {
+	cursor: pointer;
+    float: right;
+    position: relative;
+    line-height: 1;
+    right: 0em;
+    clear: both;
+    bottom: 1em;
+}
+
+.bhari-control-slider-default-val .dashicons {
+    font-size: 1em;
+    height: 1em;
+    width: 1em;
+    line-height: 1em;
+    color: #b2b6ba;
+}
+
+.bhari-control-slider-default-val .dashicons:hover {
+	color: #0085ba;
+}
