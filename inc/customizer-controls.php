@@ -56,7 +56,7 @@ class Bhari_Customize_Width_Slider_Control extends WP_Customize_Control
 
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-slider' );
-		wp_enqueue_script( 'bhari-customizer-control-slider-js', get_template_directory_uri() . '/assets/js/customizer-control-slider.js', array('jquery-ui-slider','customize-controls') );
+		wp_enqueue_script( 'bhari-customizer-control-slider-js', get_template_directory_uri() . '/assets/minified/js/customizer-control-slider.min.js', array('jquery-ui-slider','customize-controls') );
 		wp_enqueue_style( 'bhari-customizer-control-slider-css', get_template_directory_uri() . '/inc/css/customizer-control-slider.css');
 		wp_enqueue_style('jquery-ui-slider', get_template_directory_uri() . '/inc/css/jquery-ui.structure.css');
 		wp_enqueue_style('jquery-ui-slider-theme', get_template_directory_uri() . '/inc/css/jquery-ui.theme.css');
