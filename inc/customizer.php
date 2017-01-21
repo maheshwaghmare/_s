@@ -190,24 +190,26 @@ function bhari_customize_register( $wp_customize ) {
 	) );
 
 	// Container width
-	$wp_customize->add_setting( 'bhari[container-width-page]', array(
-		'default' => $defaults['container-width-page'],
+	$wp_customize->add_setting( 'bhari[container-width-archive]', array(
+		'default' => $defaults['container-width-archive'],
 		'type' => 'option',
 		// 'sanitize_callback' => 'generate_sanitize_integer',
 		'transport' => 'postMessage'
 	) );
 
-	$wp_customize->add_control( new Bhari_Customize_Width_Slider_Control( $wp_customize, 'bhari[container-width-page]', array(
-		'label'    => __('Container Width - Page','bhari'),
-		'section'  => 'bhari_section_container',
-		'priority' => 0,
-		'type'     => 'bhari-range-slider',
-		'default'  => $defaults['container-width-page'],
-		'unit'     => 'px',
-		'min'      => 700,
-		'max'      => 2000,
-		'step'     => 5,
-		'settings' => 'bhari[container-width-page]',
+	$wp_customize->add_control( new Bhari_Customize_Width_Slider_Control( $wp_customize, 'bhari[container-width-archive]', array(
+		'label'       => __('Archive','bhari'),
+		'description' => __('Container width for archive pages.','bhari'),
+		'tooltip'     => __('Container width is applied for the blog, category, tag and custom post type archive pages.','bhari'),
+		'section'     => 'bhari_section_container',
+		'priority'    => 0,
+		'type'        => 'bhari-range-slider',
+		'default'     => $defaults['container-width-archive'],
+		'unit'        => 'px',
+		'min'         => 700,
+		'max'         => 2000,
+		'step'        => 5,
+		'settings'    => 'bhari[container-width-archive]',
 	)));
 
 	// Container width
@@ -232,24 +234,24 @@ function bhari_customize_register( $wp_customize ) {
 	)));
 
 	// Container width
-	$wp_customize->add_setting( 'bhari[container-width-archive]', array(
-		'default' => $defaults['container-width-archive'],
+	$wp_customize->add_setting( 'bhari[container-width-page]', array(
+		'default' => $defaults['container-width-page'],
 		'type' => 'option',
 		// 'sanitize_callback' => 'generate_sanitize_integer',
 		'transport' => 'postMessage'
 	) );
 
-	$wp_customize->add_control( new Bhari_Customize_Width_Slider_Control( $wp_customize, 'bhari[container-width-archive]', array(
-		'label'    => __('Container Width - Archive','bhari'),
+	$wp_customize->add_control( new Bhari_Customize_Width_Slider_Control( $wp_customize, 'bhari[container-width-page]', array(
+		'label'    => __('Container Width - Page','bhari'),
 		'section'  => 'bhari_section_container',
 		'priority' => 0,
 		'type'     => 'bhari-range-slider',
-		'default'  => $defaults['container-width-archive'],
+		'default'  => $defaults['container-width-page'],
 		'unit'     => 'px',
 		'min'      => 700,
 		'max'      => 2000,
 		'step'     => 5,
-		'settings' => 'bhari[container-width-archive]',
+		'settings' => 'bhari[container-width-page]',
 	)));
 
 }
@@ -259,7 +261,12 @@ add_action( 'customize_register', 'bhari_customize_register' );
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function bhari_customize_preview_js() {
-	wp_enqueue_script( 'bhari_customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+
+	if( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+		wp_enqueue_script( 'bhari-customizer-js', get_template_directory_uri() . '/inc/assets/unminified/js/customizer.js', array( 'customize-preview' ), '20151215', true );
+	} else {
+		wp_enqueue_script( 'bhari-customizer-js', get_template_directory_uri() . '/inc/assets/minified/js/customizer.min.js', array( 'customize-preview' ), '20151215', true );
+	}
 }
 add_action( 'customize_preview_init', 'bhari_customize_preview_js' );
 
@@ -272,6 +279,10 @@ if ( ! function_exists( 'bhari_customizer_controls_css' ) ) :
 add_action( 'customize_controls_enqueue_scripts', 'bhari_customizer_controls_css' );
 function bhari_customizer_controls_css()
 {
-	wp_enqueue_style( 'generate-customizer-controls-css', get_template_directory_uri().'/inc/css/customizer.css', array() );
+	if( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+		wp_enqueue_style( 'generate-customizer-controls-css', get_template_directory_uri().'/inc/assets/unminified/css/customizer.css', array() );
+	} else {
+		wp_enqueue_style( 'generate-customizer-controls-css', get_template_directory_uri().'/inc/assets/minified/css/customizer.min.css', array() );
+	}
 }
 endif;

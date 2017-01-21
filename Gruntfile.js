@@ -7,43 +7,57 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        /**
+         * Generate RTL from CSS
+         */
         rtlcss: {
             options: {
-                // rtlcss options
                 config: {
                     preserveComments: true,
                     greedy: true
                 },
-                // generate source maps
-                map: false
+                map: false  // generate source maps
             },
             dist: {
                 files: [
-                     {
+
+                    /**
+                     * style.css => style-rtl.css
+                     */
+                    {
+                        expand: true,
+                        cwd: '',
+                        src: [
+                            'style.css',
+                        ],
+                        dest: '', 
+                        ext: '-rtl.css'
+                    },
+
+                    /**
+                     * All /unminified/ ** /.css
+                     */
+                    {
                         expand: true,
                         cwd: 'assets/unminified/css/',
                         src: [
-                                '*.css',
-                                '!*-rtl.css',
-                                '!customizer-controls.css',
-                                '!font-awesome.css',
-                            ],
-                        dest: 'assets/unminified/css', 
+                            '*.css',
+                            '!*-rtl.css',
+
+                            //  avoid
+                            '!font-awesome.css',
+                        ],
+                        dest: 'assets/unminified/css/rtl', 
                         ext: '-rtl.css'
-                        
                     },
+
                 ]
-            }/*
-            'default': {
-                
-                files: {
-                    'assets/css/unminified/rtl.css': [
-                        'assets/css/unminified/style.css'
-                    ]
-                }
-            }*/
+            }
         },
 
+        /**
+         * Generate CSS from SCSS
+         */
         sass: {
             options: {
                 sourcemap: 'none',
@@ -51,25 +65,27 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: [
+
+                    /**
+                     * style.css => assets/unminified/sass/style.scss
+                     */
                     {
                         'style.css': 'assets/unminified/sass/style.scss'
                     },
+
+                    /**
+                     * assets/unminified/css/editor-style.css => assets/unminified/sass/editor-style.scss
+                     */
                     {
                         'assets/unminified/css/editor-style.css': 'assets/unminified/sass/editor-style.scss'
                     },
-                    // /* Small Footer Layouts */
-                    // {
-                    //     expand: true,
-                    //     cwd: 'sass/site/footer/small-footer/',
-                    //     src: ['**.scss'],
-                    //     dest: 'assets/css/unminified', 
-                    //     ext: '.css'
-                    // },
-
                 ]
             }
         },
 
+        /**
+         * Vendar prefixes
+         */
         postcss: {
             options: {
                 map: false,
@@ -92,42 +108,67 @@ module.exports = function (grunt) {
             style: {
                 expand: true,
                 src: [
-                    'assets/unminified/css/style.css'
+                    'style.css'
                 ]
             }
         },
 
+        /**
+         * JS Minify
+         */
         uglify: {
             js: {
-                files: [{ // all .js to min.js
+                files: [
+
+                /**
+                 * FRONTEND
+                 */
+                { // ALL *.min.js
                     expand: true,
                     src: [
-                        '**.js'
+                        '*.js'
                     ],
                     dest: 'assets/minified/js',
                     cwd: 'assets/unminified/js',
                     ext: '.min.js'
-                }, { // all .js to .bhari.min.js
+                },
+                { // bhari.min.js
                     src: [
-                        'assets/unminified/js/**.js',
-
-                        //  Avoid customizer files
-                        '!assets/unminified/js/customizer.js',
-                        '!assets/unminified/js/customizer-preview.js',
+                        'assets/minified/js/navigation.min.js',
+                        'assets/minified/js/skip-link-focus-fix.min.js',
                     ],
                     dest: 'assets/minified/js/bhari.min.js',
-                    // cwd: 'assets/unminified/js/',
                 },
-                ]
+
+                /**
+                 * BACKEND
+                 */
+                { // ALL *.min.js
+                    expand: true,
+                    src: [
+                        '*.js'
+                    ],
+                    dest: 'inc/assets/minified/js',
+                    cwd: 'inc/assets/unminified/js',
+                    ext: '.min.js'
+                } ]
             }
         },
 
+        /**
+         * CSS Minify
+         */
         cssmin: {
             options: {
                 keepSpecialComments: 0
             },
             css: {
-                files: [{ //.css to min.css
+                files: [
+
+                /**
+                 * FRONTEND
+                 */
+                { //  ALL *.min.css
                     expand: true,
                     src: [
                         '**/*.css'
@@ -135,15 +176,33 @@ module.exports = function (grunt) {
                     dest: 'assets/minified/css',
                     cwd: 'assets/unminified/css',
                     ext: '.min.css'
-                }, { // .css to ultimate.min.css
+                },
+                {  //  bhari.min.css
                     src: [
-                        'style.css'
+                        'style.css',
+                        'assets/minified/css/font-awesome.min.css',
                     ],
-                    dest: 'assets/minified/css/style.min.css'
+                    dest: 'assets/minified/css/bhari.min.css'
+                },
+
+                /**
+                 * BACKEND
+                 */
+                { //  ALL *.min.css
+                    expand: true,
+                    src: [
+                        '*.css'
+                    ],
+                    dest: 'inc/assets/minified/css',
+                    cwd: 'inc/assets/unminified/css',
+                    ext: '.min.css'
                 }]
             }
         },
 
+        /**
+         * Copy files
+         */
         copy: {
             main: {
                 options: {
@@ -167,13 +226,16 @@ module.exports = function (grunt) {
                     '!package.json',
                     '!.gitignore',
                     '!phpunit.xml',
-                    '!README.md',
+                    '!CONTRIBUTING.md',
                     '!codesniffer.ruleset.xml',
                 ],
                 dest: 'bhari/'
             }
         },
 
+        /**
+         * Compress files
+         */
         compress: {
             main: {
                 options: {
@@ -191,12 +253,18 @@ module.exports = function (grunt) {
             }
         },
 
+        /**
+         * Clean files
+         */
         clean: {
             main: ["bhari"],
             zip: ["bhari.zip"]
 
         },
 
+        /**
+         * Generate POT
+         */
         makepot: {
             target: {
                 options: {
@@ -212,6 +280,9 @@ module.exports = function (grunt) {
             }
         },
         
+        /**
+         * Add textdomain
+         */
         addtextdomain: {
             options: {
                 textdomain: 'bhari',
@@ -224,14 +295,15 @@ module.exports = function (grunt) {
                         '!node_modules/**',
                         '!php-tests/**',
                         '!bin/**',
-                        '!admin/bsf-core/**'
                     ]
                 }
             }
         }
     });
 
-    // Load grunt tasks
+    /**
+     * Load Grunt Tasks
+     */
     grunt.loadNpmTasks('grunt-rtlcss');
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-postcss');
@@ -242,7 +314,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-wp-i18n');
 
-    // rtlcss, you will still need to install ruby and sass on your system manually to run this
+    // rtlcss [you will still need to install ruby and sass on your system manually to run this]
     grunt.registerTask('rtl', ['rtlcss']);
 
     // SASS compile

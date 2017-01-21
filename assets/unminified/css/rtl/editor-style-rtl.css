@@ -312,7 +312,7 @@ dfn, cite, em, i {
 }
 
 blockquote {
-  border-left: 5px solid #eaeaea;
+  border-right: 5px solid #eaeaea;
   padding: 0.5em 2em;
   margin: 0 1.5em 1em 1.5em;
 }
@@ -406,11 +406,11 @@ q:after, q:before {
 }
 
 q:after {
-  padding-right: 0.2em;
+  padding-left: 0.2em;
 }
 
 q:before {
-  padding-left: 0.2em;
+  padding-right: 0.2em;
 }
 
 hr {
@@ -435,7 +435,7 @@ ol {
 li > ul,
 li > ol {
   margin-bottom: 0;
-  margin-left: 1.5em;
+  margin-right: 1.5em;
 }
 
 dt {
@@ -589,23 +589,23 @@ a:hover, a:active {
   display: none;
   list-style: none;
   margin: 0;
-  padding-left: 0;
+  padding-right: 0;
 }
 
 @media screen and (min-width: 768px) {
   .main-navigation ul ul {
-    float: left;
+    float: right;
     position: absolute;
-    left: -999em;
+    right: -999em;
     z-index: 99999;
   }
   .main-navigation ul ul ul {
-    left: -999em;
+    right: -999em;
     top: 0;
   }
   .main-navigation ul ul li:hover > ul,
   .main-navigation ul ul li.focus > ul {
-    left: 100%;
+    right: 100%;
   }
   .main-navigation ul ul a {
     width: 200px;
@@ -614,7 +614,7 @@ a:hover, a:active {
 
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
-  left: auto;
+  right: auto;
 }
 
 .main-navigation li {
@@ -650,15 +650,15 @@ a:hover, a:active {
 .comment-navigation .nav-previous,
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
-  float: left;
+  float: right;
   width: 50%;
 }
 
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
 .post-navigation .nav-next {
-  float: right;
-  text-align: right;
+  float: left;
+  text-align: left;
   width: 50%;
 }
 
@@ -684,7 +684,7 @@ a:hover, a:active {
   font-size: 0.875rem;
   font-weight: bold;
   height: auto;
-  left: 5px;
+  right: 5px;
   line-height: normal;
   padding: 15px 23px 14px;
   text-decoration: none;
@@ -704,21 +704,21 @@ a:hover, a:active {
 --------------------------------------------------------------*/
 .alignleft {
   display: inline;
-  float: left;
-  margin-right: 1.5em;
+  float: right;
+  margin-left: 1.5em;
 }
 
 .alignright {
   display: inline;
-  float: right;
-  margin-left: 1.5em;
+  float: left;
+  margin-right: 1.5em;
 }
 
 .aligncenter {
   clear: both;
   display: block;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 /*--------------------------------------------------------------
@@ -779,8 +779,8 @@ object {
 
 .wp-caption img[class*="wp-image-"] {
   display: block;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
 }
 
 .wp-caption .wp-caption-text {

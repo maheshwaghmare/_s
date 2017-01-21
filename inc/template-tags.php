@@ -16,7 +16,7 @@
  */
 function bhari_wp_head( $classes ) {
 
-	if( is_home() || is_archive() ) {
+	if( is_home() || is_archive() || is_search() ) {
 		$page = 'Blog as Home / Archive';
 		$content_width = bhari_get_option( 'container-width-archive' );
 	} else if( is_page() || is_404() ) {
@@ -46,7 +46,7 @@ add_filter( 'wp_head', 'bhari_wp_head' );
 
 function bhari_body_class( $classes ) {
 
-	if( is_home() || is_archive() ) {
+	if( is_home() || is_archive() || is_search() ) {
 		$layout = bhari_get_option( 'sidebar-archive' );
 	} else if( is_page() || is_404() ) {
 		$layout = bhari_get_option( 'sidebar-page' );
@@ -56,71 +56,17 @@ function bhari_body_class( $classes ) {
 
 	switch ( $layout ) {
 
-		/**
-		 * Sidebar at Left
-		 * or
-		 * Sidebar at Right
-		 */
-		case 'layout-sidebar-content' :
-		case 'layout-content-sidebar' :
-				
-				if ( is_active_sidebar( 'sidebar-1' ) ) {
-					$classes[] = 'layout-content-sidebar';
-				} else if ( is_active_sidebar( 'sidebar-2' ) ) {
-					$classes[] = 'layout-sidebar-content';
-				}
-
-			break;
-
-		/**
-		 * Content | Sidebar | Sidebar
-		 *
-		 * Both sidebar's are active?
-		 */
-		case 'layout-content-sidebar-sidebar' :
-
-				if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-					$classes[] = 'layout-content-sidebar-sidebar';
-				} else {
-					$classes[] = 'layout-content-sidebar';
-				}
-
-			break;
-
-		/**
-		 * Sidebar | Content | Sidebar
-		 *
-		 * Both sidebar's are active?
-		 */
-		case 'layout-sidebar-content-sidebar' :
-				if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-					$classes[] = 'layout-sidebar-content-sidebar';
-				} else {
-					$classes[] = 'layout-sidebar-content';
-				}
-			break;
-
-		/**
-		 * Sidebar | Sidebar | Content
-		 *
-		 * Both sidebar's are active?
-		 */
-		case 'layout-sidebar-sidebar-content' :
-				if ( is_active_sidebar( 'sidebar-1' ) && is_active_sidebar( 'sidebar-2' ) ) {
-					$classes[] = 'layout-sidebar-sidebar-content';
-				} else {
-					$classes[] = 'layout-sidebar-content';
-				}
-			break;
-
-		/**
-		 * Not any sidebar active?
-		 */
+		case 'layout-sidebar-content' : 		$classes[] = 'layout-sidebar-content'; break;
+		case 'layout-content-sidebar' : 		$classes[] = 'layout-content-sidebar'; break;
+		case 'layout-content-sidebar-sidebar' :	$classes[] = 'layout-content-sidebar-sidebar'; break;
+		case 'layout-sidebar-content-sidebar' :	$classes[] = 'layout-sidebar-content-sidebar'; break;
+		case 'layout-sidebar-sidebar-content' : $classes[] = 'layout-sidebar-sidebar-content'; break;
 		case 'layout-no-sidebar' :
 		default:
 				$classes[] = 'layout-no-sidebar';
 			break;
 	}
+	// vl($classes);
 
 	return $classes;
 }
@@ -131,36 +77,19 @@ function bhari_get_sidebar_layout( $layout ) {
 
 	switch ( $layout ) {
 
-		/**
-		 * Add Only One sidebar
-		 * 
-		 * Either left / right sidebar
-		 */
 		case 'layout-sidebar-content' :
-		case 'layout-content-sidebar' :
-				if ( is_active_sidebar( 'sidebar-1' ) ) {
-					get_sidebar( 'right' );
-				} else if ( is_active_sidebar( 'sidebar-2' ) ) {
 					get_sidebar( 'left' );
-				}
-			break;
+				break;
 
-		/**
-		 * Add left and right sidebar
-		 */
+		case 'layout-content-sidebar' :
+					get_sidebar( 'right' );
+				break;
+
 		case 'layout-content-sidebar-sidebar' :
 		case 'layout-sidebar-content-sidebar' :
 		case 'layout-sidebar-sidebar-content' :
-				if ( is_active_sidebar( 'sidebar-1' ) ) {
-					get_sidebar( 'right' );
-				}
-				if ( is_active_sidebar( 'sidebar-2' ) ) {
 					get_sidebar( 'left' );
-				}
-			break;
-
-		case 'layout-no-sidebar' :
-		default:
+					get_sidebar( 'right' );
 			break;
 	}
 }

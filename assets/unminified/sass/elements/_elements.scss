@@ -13,7 +13,11 @@ html {
 
 body {
 	font-size: $font_size__body;
+	line-height: $font__line-height-body;
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+	@media all and ( max-width: 768px ) {
+		font-size: $mobile_font_size__body;
+	}
 }
 
 blockquote {

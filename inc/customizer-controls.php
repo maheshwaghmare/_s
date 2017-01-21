@@ -16,6 +16,7 @@ class Bhari_Customize_Width_Slider_Control extends WP_Customize_Control
 	public $min     = 0;
 	public $max     = 9999;
 	public $step    = 1;
+	public $tooltip = '';
 	
 	public function to_json() {
 		parent::to_json();
@@ -28,6 +29,7 @@ class Bhari_Customize_Width_Slider_Control extends WP_Customize_Control
 		$this->json[ 'max' ]         = $this->max;
 		$this->json[ 'step' ]        = $this->step;
 		$this->json[ 'unit' ]        = $this->unit;
+		$this->json[ 'tooltip' ]     = $this->tooltip;
 	}
 	
 	public function content_template() {
@@ -35,6 +37,14 @@ class Bhari_Customize_Width_Slider_Control extends WP_Customize_Control
 		<label>
 			<p>
 				<span class="customize-control-title"> {{ data.label }} </span>
+				<span class="description customize-control-description">{{ data.description }} </span>
+				<# if ( '' !== data.tooltip ) { #>
+				<span class="customize-control-tooltip">
+					<i class="dashicons dashicons-info" style="color: #b2b6ba;">
+						<span class="tooltip">{{ data.tooltip }}</span>
+					</i>
+				</span>
+				<# } #>
 				<span class="value">
 					<input name="{{ data.id }}" type="number" {{{ data.link }}} value="{{{ data.value }}}" class="bhari-control-slider-input" min="{{data.min}}" max="{{data.max}}" step="{{data.step}}" />
 					<span class="unit">{{data.unit}}</span>
@@ -56,11 +66,19 @@ class Bhari_Customize_Width_Slider_Control extends WP_Customize_Control
 
 		wp_enqueue_script( 'jquery-ui-core' );
 		wp_enqueue_script( 'jquery-ui-slider' );
-		wp_enqueue_script( 'bhari-customizer-control-slider-js', get_template_directory_uri() . '/assets/js/customizer-control-slider.js', array('jquery-ui-slider','customize-controls') );
-		wp_enqueue_style( 'bhari-customizer-control-slider-css', get_template_directory_uri() . '/inc/css/customizer-control-slider.css');
-		wp_enqueue_style('jquery-ui-slider', get_template_directory_uri() . '/inc/css/jquery-ui.structure.css');
-		wp_enqueue_style('jquery-ui-slider-theme', get_template_directory_uri() . '/inc/css/jquery-ui.theme.css');
-		
+
+		if( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			wp_enqueue_script( 'bhari-customizer-control-slider-js', get_template_directory_uri() . '/inc/assets/unminified/js/customizer-control-slider.js', array('jquery-ui-slider','customize-controls') );
+			wp_enqueue_style( 'bhari-customizer-control-slider-css', get_template_directory_uri() . '/inc/assets/unminified/css/customizer-control-slider.css');
+			wp_enqueue_style('jquery-ui-slider', get_template_directory_uri() . '/inc/assets/unminified/css/jquery-ui-structure.css');
+			wp_enqueue_style('jquery-ui-slider-theme', get_template_directory_uri() . '/inc/assets/unminified/css/jquery-ui-theme.css');
+		} else {
+			wp_enqueue_script( 'bhari-customizer-control-slider-js', get_template_directory_uri() . '/inc/assets/minified/js/customizer-control-slider.min.js', array('jquery-ui-slider','customize-controls') );
+			wp_enqueue_style( 'bhari-customizer-control-slider-css', get_template_directory_uri() . '/inc/assets/minified/css/customizer-control-slider.min.css');
+			wp_enqueue_style('jquery-ui-slider', get_template_directory_uri() . '/inc/assets/minified/css/jquery-ui-structure.min.css');
+			wp_enqueue_style('jquery-ui-slider-theme', get_template_directory_uri() . '/inc/assets/minified/css/jquery-ui-theme.min.css');
+		}
+
 	}
 }
 endif;
