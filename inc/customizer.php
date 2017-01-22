@@ -31,13 +31,6 @@ function bhari_get_defaults() {
 	$bhari_defaults = array(
 
 		/**
-		 * Colors
-		 */
-		'link-color'   => '#34495e',
-		'link-h-color' => '#293b4c',
-		'text-color'   => '#404040',
-
-		/**
 		 * Container
 		 */
 		'container-width-page'    => 1100,
@@ -263,41 +256,6 @@ function bhari_customize_register( $wp_customize ) {
 		'settings' => 'bhari[container-width-page]',
 	)));
 
-	/**
-	 * Section - Colors
-	 */
-	$wp_customize->add_setting( 'bhari[link-color]', array(
-		'default'              => $defaults['link-color'],
-		'sanitize_callback'    => array( 'Bhari_Customize_Sanitize', '_sanitize_hex_color' ),
-		'sanitize_js_callback' => 'maybe_hash_hex_color',
-	) );
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bhari[link-color]', array(
-		'label'   => __( 'Link / Theme Color' ),
-		'section'     => 'colors',
-		// 'priority' => 40,
-	) ) );
-
-	$wp_customize->add_setting( 'bhari[link-h-color]', array(
-		'default'              => $defaults['link-h-color'],
-		'sanitize_callback'    => array( 'Bhari_Customize_Sanitize', '_sanitize_hex_color' ),
-		'sanitize_js_callback' => 'maybe_hash_hex_color',
-	) );
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bhari[link-h-color]', array(
-		'label'   => __( 'Link Hover Color' ),
-		'section'     => 'colors',
-		// 'priority' => 40,
-	) ) );
-
-	$wp_customize->add_setting( 'bhari[text-color]', array(
-		'default'              => $defaults['text-color'],
-		'sanitize_callback'    => array( 'Bhari_Customize_Sanitize', '_sanitize_hex_color' ),
-		'sanitize_js_callback' => 'maybe_hash_hex_color',
-	) );
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bhari[text-color]', array(
-		'label'   => __( 'Text Color' ),
-		'section'     => 'colors',
-		// 'priority' => 40,
-	) ) );
 }
 add_action( 'customize_register', 'bhari_customize_register' );
 
