@@ -182,15 +182,15 @@ if ( ! function_exists( 'bhari_setup' ) ) :
 
 			// 'attachments' => array(
 			// 	'image-espresso' => array(
-			// 		'post_title' => _x( 'Espresso', 'Theme starter content', 'twentyseventeen' ),
+			// 		'post_title' => _x( 'Espresso', 'Theme starter content', 'bhari' ),
 			// 		'file' => 'assets/images/espresso.jpg',
 			// 	),
 			// 	'image-sandwich' => array(
-			// 		'post_title' => _x( 'Sandwich', 'Theme starter content', 'twentyseventeen' ),
+			// 		'post_title' => _x( 'Sandwich', 'Theme starter content', 'bhari' ),
 			// 		'file' => 'assets/images/sandwich.jpg',
 			// 	),
 			// 	'image-coffee' => array(
-			// 		'post_title' => _x( 'Coffee', 'Theme starter content', 'twentyseventeen' ),
+			// 		'post_title' => _x( 'Coffee', 'Theme starter content', 'bhari' ),
 			// 		'file' => 'assets/images/coffee.jpg',
 			// 	),
 			// ),
@@ -210,7 +210,7 @@ if ( ! function_exists( 'bhari_setup' ) ) :
 
 			// 'nav_menus' => array(
 			// 	'top' => array(
-			// 		'name' => __( 'Top Menu', 'twentyseventeen' ),
+			// 		'name' => __( 'Top Menu', 'bhari' ),
 			// 		'items' => array(
 			// 			'page_home',
 			// 			'page_about',
@@ -219,7 +219,7 @@ if ( ! function_exists( 'bhari_setup' ) ) :
 			// 		),
 			// 	),
 			// 	'social' => array(
-			// 		'name' => __( 'Social Links Menu', 'twentyseventeen' ),
+			// 		'name' => __( 'Social Links Menu', 'bhari' ),
 			// 		'items' => array(
 			// 			'link_yelp',
 			// 			'link_facebook',
