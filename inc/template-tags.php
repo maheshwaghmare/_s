@@ -8,148 +8,107 @@
  */
 
 /**
- * Content Width
- *
- * 'container-width-archive'		Applied for archive pages (Front page as a Blog page)
- * 'container-width-page'			Applied for Only pages. (Front page as a Static page)
- * 'container-width-single'			Applied for Only single post.
+ * Add sidebars
  */
-function bhari_wp_head( $classes ) {
+if( ! function_exists('bhari_get_sidebar_layout') ) :
+	function bhari_get_sidebar_layout( $layout ) {
 
-	if( is_home() || is_archive() || is_search() ) {
-		$page = 'Blog as Home / Archive';
-		$content_width = bhari_get_option( 'container-width-archive' );
-	} else if( is_page() || is_404() ) {
-		$page = 'Static page as Home / Page';
-		$content_width = bhari_get_option( 'container-width-page' );
-	} else if( is_single() ) {
-		$page = 'Post';
-		$content_width = bhari_get_option( 'container-width-single' );
-	} else {
-		$page = 'Not found';
-		$content_width = 1100;
-	}
-	// vl( $page . ' ' . $content_width );
+		switch ( $layout ) {
 
-	?>
-	<style type="text/css">
-		.site-content {
-			max-width: <?php esc_attr_e( $content_width ); ?>px;
+			case 'layout-sidebar-content' :
+						get_sidebar( 'left' );
+					break;
+
+			case 'layout-content-sidebar' :
+						get_sidebar( 'right' );
+					break;
+
+			case 'layout-content-sidebar-sidebar' :
+			case 'layout-sidebar-content-sidebar' :
+			case 'layout-sidebar-sidebar-content' :
+						get_sidebar( 'left' );
+						get_sidebar( 'right' );
+				break;
 		}
-	</style>
-	<?php
-
-	return $classes;
-}
-
-add_filter( 'wp_head', 'bhari_wp_head' );
-
-function bhari_body_class( $classes ) {
-
-	if( is_home() || is_archive() || is_search() ) {
-		$layout = bhari_get_option( 'sidebar-archive' );
-	} else if( is_page() || is_404() ) {
-		$layout = bhari_get_option( 'sidebar-page' );
-	} else if( is_single() ) {
-		$layout = bhari_get_option( 'sidebar-single' );
 	}
+endif;
 
-	switch ( $layout ) {
-
-		case 'layout-sidebar-content' : 		$classes[] = 'layout-sidebar-content'; break;
-		case 'layout-content-sidebar' : 		$classes[] = 'layout-content-sidebar'; break;
-		case 'layout-content-sidebar-sidebar' :	$classes[] = 'layout-content-sidebar-sidebar'; break;
-		case 'layout-sidebar-content-sidebar' :	$classes[] = 'layout-sidebar-content-sidebar'; break;
-		case 'layout-sidebar-sidebar-content' : $classes[] = 'layout-sidebar-sidebar-content'; break;
-		case 'layout-no-sidebar' :
-		default:
-				$classes[] = 'layout-no-sidebar';
-			break;
-	}
-	// vl($classes);
-
-	return $classes;
-}
-
-add_filter( 'body_class', 'bhari_body_class' );
-
-function bhari_get_sidebar_layout( $layout ) {
-
-	switch ( $layout ) {
-
-		case 'layout-sidebar-content' :
-					get_sidebar( 'left' );
-				break;
-
-		case 'layout-content-sidebar' :
-					get_sidebar( 'right' );
-				break;
-
-		case 'layout-content-sidebar-sidebar' :
-		case 'layout-sidebar-content-sidebar' :
-		case 'layout-sidebar-sidebar-content' :
-					get_sidebar( 'left' );
-					get_sidebar( 'right' );
-			break;
-	}
-}
-
+/**
+ * Get sidebar for page's
+ */
+if( ! function_exists('bhari_get_sidebar_page') ) :
 function bhari_get_sidebar_page() {
 	$layout = bhari_get_option( 'sidebar-page' );
 	bhari_get_sidebar_layout( $layout );
 }
+endif;
 
-function bhari_get_sidebar_single() {
-	$layout = bhari_get_option( 'sidebar-single' );
-	bhari_get_sidebar_layout( $layout );
-}
-
-function bhari_get_sidebar_archive() {
-	$layout = bhari_get_option( 'sidebar-archive' );
-	bhari_get_sidebar_layout( $layout );
-}
-
-add_action( 'wp_head', function() {
-	$sidebar_single  = bhari_get_option( 'bhari[sidebar-single]');
-	$sidebar_archive = bhari_get_option( 'bhari[sidebar-archive]');
-} );
-
-function bhari_strings( $request_string = '', $default_val = '' ) {
-
-	$defaults = apply_filters( 'bhari/default_strings', array(
-		'pagination-prev'        => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-angle-left"></i> ' . __( ' Previous', 'bhari' ) : '' . __( ' Previous', 'bhari' ),
-		'pagination-next'        => ( BHARI_SUPPORT_FONTAWESOME ) ? __( 'Next', 'bhari' ) . ' <i class="fa fa-angle-right"></i>' : __( 'Next', 'bhari' ),
-		'single-pagination-prev' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-icon"><i class="fa fa-angle-left"></i></span><span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ),
-		'single-pagination-next' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span><span class="link-icon"><i class="fa fa-angle-right"></i></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span>' ),
-	) );
-
-	if( array_key_exists($request_string, $defaults) ) {
-		return $defaults[$request_string];
-	} else {
-		return $default_val;
+/**
+ * Get sidebar for page's
+ */
+if( ! function_exists('bhari_get_sidebar_single') ) :
+	function bhari_get_sidebar_single() {
+		$layout = bhari_get_option( 'sidebar-single' );
+		bhari_get_sidebar_layout( $layout );
 	}
-}
+endif;
 
-function bhari_archive_title() {
-	$icons = array(
-		'tag'      => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-tag"></i>' : '',
-		'category' => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-folder"></i>' : '',
-		'date'     => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-calendar"></i>' : '',
-		'author'   => ( BHARI_POSTMETA_SUPPORT_AUTHOR_IMAGE ) ? get_avatar( esc_url( get_the_author_meta( 'ID' ) ), 50 ) : '',
-	);
-
-	if( is_tag() ) {
-		the_archive_title( '<h1 class="page-title"> ' . $icons['tag'], '</h1>' );
-	} else if( is_category() ) {
-		the_archive_title( '<h1 class="page-title"> ' . $icons['tag'], '</h1>' );
-	} else if( is_date() ) {
-		the_archive_title( '<h1 class="page-title"> ' . $icons['tag'], '</h1>' );
-	} else if( is_author() ) {
-		the_archive_title( '<h1 class="page-title"> ' . $icons['author'], '</h1>' );
-	} else {
-		the_archive_title( '<h1 class="page-title">', '</h1>' );
+/**
+ * Get sidebar for page's
+ */
+if( ! function_exists('bhari_get_sidebar_archive') ) :
+	function bhari_get_sidebar_archive() {
+		$layout = bhari_get_option( 'sidebar-archive' );
+		bhari_get_sidebar_layout( $layout );
 	}
-}
+endif;
+
+/**
+ * Theme default strings
+ */
+if( ! function_exists('bhari_strings') ) :
+	function bhari_strings( $request_string = '', $default_val = '' ) {
+
+		$defaults = apply_filters( 'bhari/default_strings', array(
+			'pagination-prev'        => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-angle-left"></i> ' . __( ' Previous', 'bhari' ) : '' . __( ' Previous', 'bhari' ),
+			'pagination-next'        => ( BHARI_SUPPORT_FONTAWESOME ) ? __( 'Next', 'bhari' ) . ' <i class="fa fa-angle-right"></i>' : __( 'Next', 'bhari' ),
+			'single-pagination-prev' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-icon"><i class="fa fa-angle-left"></i></span><span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ),
+			'single-pagination-next' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span><span class="link-icon"><i class="fa fa-angle-right"></i></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span>' ),
+		) );
+
+		if( array_key_exists($request_string, $defaults) ) {
+			return $defaults[$request_string];
+		} else {
+			return $default_val;
+		}
+	}
+endif;
+
+/**
+ * Archive Title
+ */
+if( ! function_exists('bhari_archive_title') ) :
+	function bhari_archive_title() {
+		$icons = array(
+			'tag'      => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-tag"></i>' : '',
+			'category' => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-folder"></i>' : '',
+			'date'     => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-calendar"></i>' : '',
+			'author'   => ( BHARI_POSTMETA_SUPPORT_AUTHOR_IMAGE ) ? get_avatar( esc_url( get_the_author_meta( 'ID' ) ), 50 ) : '',
+		);
+
+		if( is_tag() ) {
+			the_archive_title( '<h1 class="page-title"> ' . $icons['tag'], '</h1>' );
+		} else if( is_category() ) {
+			the_archive_title( '<h1 class="page-title"> ' . $icons['tag'], '</h1>' );
+		} else if( is_date() ) {
+			the_archive_title( '<h1 class="page-title"> ' . $icons['tag'], '</h1>' );
+		} else if( is_author() ) {
+			the_archive_title( '<h1 class="page-title"> ' . $icons['author'], '</h1>' );
+		} else {
+			the_archive_title( '<h1 class="page-title">', '</h1>' );
+		}
+	}
+endif;
 
 /**
  * Show the post meta
@@ -159,7 +118,7 @@ function bhari_archive_title() {
  * @param  boolean $echo      Is true the print markup else return
  * @return mixed 			array / html
  */
-if( !function_exists('bhari_post_meta') ) {
+if( !function_exists('bhari_post_meta') ) :
 	function bhari_post_meta( $meta_list = array(), $before = '', $after = '', $echo = true ) {
 
 		$meta_data = array();
@@ -197,11 +156,11 @@ if( !function_exists('bhari_post_meta') ) {
 						esc_html_x( '%s', 'post author', 'bhari' ),
 						'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 					);
-					$meta_author  = '<span class="byline">';
-					$meta_author .= $meta_args['meta']['author']['before'];
+					$meta_author  = $meta_args['meta']['author']['before'];
+					$meta_author .= '<span class="byline">';
 					$meta_author .= $byline;
-					$meta_author .= $meta_args['meta']['author']['after'];
 					$meta_author .= '</span>';
+					$meta_author .= $meta_args['meta']['author']['after'];
 					$meta_data['author'] = $meta_author;
 				break;
 
@@ -222,11 +181,11 @@ if( !function_exists('bhari_post_meta') ) {
 					$posted_on = sprintf( esc_html_x( '%s', 'post date', 'bhari' ),
 						'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 					);
-					$meta_date  = '<span class="posted-on">';
-					$meta_date .= $meta_args['meta']['date']['before'];
+					$meta_date  = $meta_args['meta']['date']['before'];
+					$meta_date .= '<span class="posted-on">';
 					$meta_date .= $posted_on;
-					$meta_date .= $meta_args['meta']['date']['after'];
 					$meta_date .= '</span>'; // WPCS: XSS OK.
+					$meta_date .= $meta_args['meta']['date']['after'];
 					$meta_data['date'] = $meta_date;
 				break;
 				
@@ -289,32 +248,32 @@ if( !function_exists('bhari_post_meta') ) {
 		}
 
 	}
-}
+endif;
 
-if ( ! function_exists( 'bhari_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function bhari_entry_footer() {
-	// Hide category and tag text for pages.
-	if ( 'post' === get_post_type() && is_single() ) {
+if ( ! function_exists( 'bhari_entry_footer' ) ) :
+	function bhari_entry_footer() {
+		// Hide category and tag text for pages.
+		if ( 'post' === get_post_type() && is_single() ) {
 
-		// $byline = sprintf(
-		// 	esc_html_x( '%s', 'post author', 'bhari' ),
-		// 	'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
-		// );
+			// $byline = sprintf(
+			// 	esc_html_x( '%s', 'post author', 'bhari' ),
+			// 	'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
+			// );
 
-		// echo '<span class="byline"> ' . get_avatar( esc_url( get_the_author_meta( 'ID' ) ), 100 );
-		// echo $byline . '</span>';
+			// echo '<span class="byline"> ' . get_avatar( esc_url( get_the_author_meta( 'ID' ) ), 100 );
+			// echo $byline . '</span>';
+		}
+
+		if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+			echo '<span class="comments-link"> <i class="fa fa-comments"></i> ';
+			/* translators: %s: post title */
+			comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bhari' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
+			echo '</span>';
+		}
 	}
-
-	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-		echo '<span class="comments-link"> <i class="fa fa-comments"></i> ';
-		/* translators: %s: post title */
-		comments_popup_link( sprintf( wp_kses( __( 'Leave a Comment<span class="screen-reader-text"> on %s</span>', 'bhari' ), array( 'span' => array( 'class' => array() ) ) ), get_the_title() ) );
-		echo '</span>';
-	}
-}
 endif;
 
 /**
@@ -322,40 +281,44 @@ endif;
  *
  * @return bool
  */
-function bhari_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'bhari_categories' ) ) ) {
-		// Create an array of all the categories that are attached to posts.
-		$all_the_cool_cats = get_categories( array(
-			'fields'     => 'ids',
-			'hide_empty' => 1,
-			// We only need to know if there is more than one category.
-			'number'     => 2,
-		) );
+if ( ! function_exists( 'bhari_categorized_blog' ) ) :
+	function bhari_categorized_blog() {
+		if ( false === ( $all_the_cool_cats = get_transient( 'bhari_categories' ) ) ) {
+			// Create an array of all the categories that are attached to posts.
+			$all_the_cool_cats = get_categories( array(
+				'fields'     => 'ids',
+				'hide_empty' => 1,
+				// We only need to know if there is more than one category.
+				'number'     => 2,
+			) );
 
-		// Count the number of categories that are attached to the posts.
-		$all_the_cool_cats = count( $all_the_cool_cats );
+			// Count the number of categories that are attached to the posts.
+			$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'bhari_categories', $all_the_cool_cats );
+			set_transient( 'bhari_categories', $all_the_cool_cats );
+		}
+
+		if ( $all_the_cool_cats > 1 ) {
+			// This blog has more than 1 category so bhari_categorized_blog should return true.
+			return true;
+		} else {
+			// This blog has only 1 category so bhari_categorized_blog should return false.
+			return false;
+		}
 	}
-
-	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so bhari_categorized_blog should return true.
-		return true;
-	} else {
-		// This blog has only 1 category so bhari_categorized_blog should return false.
-		return false;
-	}
-}
+endif;
 
 /**
  * Flush out the transients used in bhari_categorized_blog.
  */
-function bhari_category_transient_flusher() {
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
+if ( ! function_exists( 'bhari_category_transient_flusher' ) ) :
+	function bhari_category_transient_flusher() {
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+			return;
+		}
+		// Like, beat it. Dig?
+		delete_transient( 'bhari_categories' );
 	}
-	// Like, beat it. Dig?
-	delete_transient( 'bhari_categories' );
-}
-add_action( 'edit_category', 'bhari_category_transient_flusher' );
-add_action( 'save_post',     'bhari_category_transient_flusher' );
+	add_action( 'edit_category', 'bhari_category_transient_flusher' );
+	add_action( 'save_post',     'bhari_category_transient_flusher' );
+endif;

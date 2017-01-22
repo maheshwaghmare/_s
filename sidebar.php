@@ -6,10 +6,6 @@
  *
  * @package Bhari
  */
-
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-	return;
-}
 ?>
 
 <aside id="secondary-right" class="widget-area" role="complementary">

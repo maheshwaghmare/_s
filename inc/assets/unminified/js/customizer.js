@@ -15,12 +15,13 @@
 	 * 
 	 * .error404,
 	 * .page
-	 * 
 	 */
 	wp.customize( 'bhari[container-width-page]', function( value ) {
 		value.bind( function( newval ) {
 			var selector  = '.error404 .site-content,';
-				selector += '.page .site-content';
+				selector += '.page .site-content,';
+				selector += '.error404 .custom-headers,';
+				selector += '.page .custom-headers';
 
 			if ( jQuery( 'style#container_width_page' ).length ) {
 				jQuery( 'style#container_width_page' ).html( selector + ' { max-width:' + newval + 'px;}' );
@@ -40,11 +41,16 @@
 	 * 
 	 * .archive
 	 * .blog
+	 * .search
 	 */
 	wp.customize( 'bhari[container-width-archive]', function( value ) {
 		value.bind( function( newval ) {
 			var selector  = '.archive .site-content,';
-				selector += '.blog .site-content';
+				selector += '.search .site-content,';
+				selector += '.blog .site-content,';
+				selector += '.archive .custom-headers,';
+				selector += '.search .custom-headers,';
+				selector += '.blog .custom-headers';
 
 			if ( jQuery( 'style#container_width_archive' ).length ) {
 				jQuery( 'style#container_width_archive' ).html( selector + ' { max-width:' + newval + 'px;}' );
@@ -66,7 +72,8 @@
 	 */
 	wp.customize( 'bhari[container-width-single]', function( value ) {
 		value.bind( function( newval ) {
-			var selector  = '.single .site-content';
+			var selector  = '.single .site-content,';
+				selector += '.single .custom-headers';
 
 			if ( jQuery( 'style#container_width_single' ).length ) {
 				jQuery( 'style#container_width_single' ).html( selector + ' { max-width:' + newval + 'px;}' );

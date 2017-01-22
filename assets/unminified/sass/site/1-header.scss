@@ -42,7 +42,7 @@
     background: $color__link;
     color: $color__link-menu;
 
-    @media screen and (min-width: 37.5em) {
+    @media screen and (min-width: 768px) {
         text-align: center;
         float: none;
 
@@ -75,7 +75,7 @@
                 font-size: 1rem;
                 right: 0.5em;
 
-                @media screen and (max-width: 37.5em) {
+                @media screen and (max-width: 768px) {
                     top: 2em;
                     right: 1.5em;
                 }
@@ -101,7 +101,7 @@
         background-color: $color__link-hover;
     }
 
-    @media screen and (max-width: 37.5em) {
+    @media screen and (max-width: 768px) {
         .sub-menu a {
             padding-left: 2em;
         }
@@ -119,6 +119,8 @@
  */
 .custom-headers {
     text-align: center;
-    margin-top: 3em;
     line-height: 0;
+    margin-left: auto;
+    margin-top: 3em;
+    margin-right: auto;
 }

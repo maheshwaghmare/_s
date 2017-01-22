@@ -54,6 +54,6 @@ get_header(); ?>
 
 <?php
 
-bhari_get_sidebar_page();
+bhari_get_sidebar_archive();
 
 get_footer();

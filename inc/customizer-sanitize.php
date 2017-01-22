@@ -3,8 +3,7 @@
 /**
  * Bhari Customizer Sanitize
  *
- * @package WordPress
- * @subpackage Customize
+ * @package Bhari
  * @since 1.0.0
  */
 final class Bhari_Customize_Sanitize {
@@ -14,7 +13,7 @@ final class Bhari_Customize_Sanitize {
 	}
 
 	function _sanitize_choices( $input, $setting ) {
-	
+		
 		// Ensure input is a slug
 		$input = sanitize_key( $input );
 		
@@ -37,5 +36,4 @@ final class Bhari_Customize_Sanitize {
 	 
 	    return '';
 	}
-
 }

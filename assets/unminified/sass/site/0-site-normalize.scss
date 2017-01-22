@@ -10,7 +10,8 @@
  * .layout-sidebar-content-sidebar
  * .layout-sidebar-sidebar-content
  */
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 768px) {
+
     #primary,
     #secondary-left,
     #secondary-right {
@@ -39,7 +40,7 @@
             left: $sidebar-grid-2-sidebar-width;
             padding-left: $sidebar-gutter;
         }
-        #secondary-right,
+        #secondary-left,
         #secondary-right {
             width: $sidebar-grid-2-sidebar-width;
             left: - ( $sidebar-grid-2-content-width );
@@ -110,8 +111,8 @@
     word-wrap: break-word;
     margin: 3em auto 3em auto;
 
-    @media screen and (max-width: 37.5em) {
-        padding: 0 2em;
+    @media screen and (max-width: 768px) {
+        padding: 0 1em;
     }
 }
 
@@ -220,13 +221,19 @@
         margin-right: 0.5em;
     }
 
+    img.avatar {
+        vertical-align: middle;
+        margin-right: 0.5em;
+        border-radius: 50%;
+    }
+
     .label {
         background: $color__background-body;
         font-size: 0.9rem;
         padding: 0.1em 0.5em;
         display: inline-block;
         border-radius: 4px;
-        margin-right: 0.2em;
+        margin-right: 0.5em;
     }
 }
 
@@ -234,15 +241,9 @@
     margin-right: 1em;
 }
 
-.byline img {
-    vertical-align: middle;
-    margin-right: 0.5em;
-    border-radius: 50%;
-}
-
 .nav-links {
 
-    @media screen and (max-width: 37.5em) {
+    @media screen and (max-width: 768px) {
         text-align: center;
         margin-bottom: 1em;
     }
@@ -252,8 +253,12 @@
         background: $white-color;
         padding: 1em 1.5em;
         display: inline-block;
-        font-size: 1em;
+        font-size: 1rem;
         text-decoration: none;
+
+        @media screen and (max-width: 768px) {
+            width: 100%;
+        }
 
         &:hover .link-icon {
             color: $white-color;

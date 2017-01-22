@@ -118,7 +118,7 @@ dfn {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 2rem;
   margin: 0.67em 0;
 }
 
@@ -173,7 +173,7 @@ kbd,
 pre,
 samp {
   font-family: monospace, monospace;
-  font-size: 1em;
+  font-size: 1rem;
 }
 
 button,
@@ -362,7 +362,7 @@ html {
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 37.5em) {
+@media screen and (max-width: 768px) {
   html {
     font-size: 85%;
   }
@@ -382,7 +382,7 @@ body {
   /* Fallback for when there is no custom background color defined. */
 }
 
-@media screen and (max-width: 37.5em) {
+@media screen and (max-width: 768px) {
   body {
     font-size: 16px;
   }
@@ -593,7 +593,7 @@ a:hover, a:active {
   padding-left: 0;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 768px) {
   .main-navigation ul ul {
     float: left;
     position: absolute;
@@ -632,7 +632,7 @@ a:hover, a:active {
   display: block;
 }
 
-@media screen and (min-width: 37.5em) {
+@media screen and (min-width: 768px) {
   .menu-toggle {
     display: none;
   }
@@ -648,19 +648,20 @@ a:hover, a:active {
   overflow: hidden;
 }
 
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-  float: left;
-  width: 50%;
-}
-
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%;
+@media screen and (max-width: 768px) {
+  .comment-navigation .nav-previous,
+  .posts-navigation .nav-previous,
+  .post-navigation .nav-previous {
+    float: left;
+    width: 50%;
+  }
+  .comment-navigation .nav-next,
+  .posts-navigation .nav-next,
+  .post-navigation .nav-next {
+    float: right;
+    text-align: right;
+    width: 50%;
+  }
 }
 
 /*--------------------------------------------------------------
