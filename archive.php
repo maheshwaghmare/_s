@@ -17,17 +17,7 @@ get_header(); ?>
 
 			<header class="page-header">
 				<?php
-					if( is_tag() ) {
-						the_archive_title( '<h1 class="page-title"> <i class="fa fa-tag"></i> ', '</h1>' );
-					} else if( is_category() ) {
-						the_archive_title( '<h1 class="page-title"> <i class="fa fa-folder"></i> ', '</h1>' );
-					} else if( is_date() ) {
-						the_archive_title( '<h1 class="page-title"> <i class="fa fa-calendar"></i> ', '</h1>' );
-					} else if( is_author() ) {
-						the_archive_title( '<h1 class="page-title"> ' . get_avatar( esc_url( get_the_author_meta( 'ID' ) ), 50 ), '</h1>' );
-					} else {
-						the_archive_title( '<h1 class="page-title">', '</h1>' );
-					}
+					bhari_archive_title();
 					the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->
@@ -47,8 +37,8 @@ get_header(); ?>
 
 			the_posts_pagination( array(
 				'mid_size'  => 4,
-				'prev_text' => __( '<i class="fa fa-angle-left"></i> Previous', 'bhari' ),
-				'next_text' => __( 'Next <i class="fa fa-angle-right"></i>', 'bhari' ),
+				'prev_text' => bhari_strings( 'pagination-prev' ),
+				'next_text' => bhari_strings( 'pagination-next' ),
 			) );
 
 		else :

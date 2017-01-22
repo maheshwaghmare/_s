@@ -9,11 +9,13 @@ input[type="submit"] {
 	background: $color__background-button;
     color: $white-color;
 	&:hover {
+		background: $color__border-button-hover;
 		border-color: $color__border-button-hover;
 	}
 
 	&:active,
 	&:focus {
+		background: $color__border-button-focus;
 		border-color: $color__border-button-focus;
 	}
 }

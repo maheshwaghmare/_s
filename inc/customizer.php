@@ -31,6 +31,13 @@ function bhari_get_defaults() {
 	$bhari_defaults = array(
 
 		/**
+		 * Colors
+		 */
+		'link-color'   => '#34495e',
+		'link-h-color' => '#293b4c',
+		'text-color'   => '#404040',
+
+		/**
 		 * Container
 		 */
 		'container-width-page'    => 1100,
@@ -61,6 +68,8 @@ function bhari_customize_register( $wp_customize ) {
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
+	$wp_customize->get_control( 'header_textcolor' )->label     = __( 'Site Title & Tagline Color', 'bhari' );
+	$wp_customize->get_control( 'background_color' )->label     = __( 'Body Background Color', 'bhari' );
 
 	/**
 	 * Get default's
@@ -70,7 +79,7 @@ function bhari_customize_register( $wp_customize ) {
 	/**
 	 * Load customizer helper files
 	 */
-	// require_once get_template_directory() . '/inc/sanitize.php';
+	require_once get_template_directory() . '/inc/customizer-sanitize.php';
 	require_once get_template_directory() . '/inc/customizer-controls.php';
 
 	// Add control types so controls can be built using JS
@@ -101,7 +110,7 @@ function bhari_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'bhari[sidebar-page]', array(
 		'default'           => $defaults['sidebar-page'],
 		'type'              => 'option',
-		// 'sanitize_callback' => 'generate_sanitize_choices',
+		'sanitize_callback'    => array( 'Bhari_Customize_Sanitize', '_sanitize_hex_color' ),
 		// 'transport'         => 'postMessage'
 	) );
 
@@ -126,7 +135,7 @@ function bhari_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'bhari[sidebar-single]', array(
 		'default'           => $defaults['sidebar-single'],
 		'type'              => 'option',
-		// 'sanitize_callback' => 'generate_sanitize_choices',
+		'sanitize_callback' => array( 'Bhari_Customize_Sanitize', '_sanitize_choices' ),
 		// 'transport'         => 'postMessage'
 	) );
 
@@ -151,7 +160,7 @@ function bhari_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'bhari[sidebar-archive]', array(
 		'default'           => $defaults['sidebar-archive'],
 		'type'              => 'option',
-		// 'sanitize_callback' => 'generate_sanitize_choices',
+		'sanitize_callback' => array( 'Bhari_Customize_Sanitize', '_sanitize_choices' ),
 		// 'transport'         => 'postMessage'
 	) );
 
@@ -193,7 +202,7 @@ function bhari_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'bhari[container-width-archive]', array(
 		'default' => $defaults['container-width-archive'],
 		'type' => 'option',
-		// 'sanitize_callback' => 'generate_sanitize_integer',
+		'sanitize_callback' => array( 'Bhari_Customize_Sanitize', '_sanitize_integer' ),
 		'transport' => 'postMessage'
 	) );
 
@@ -216,7 +225,7 @@ function bhari_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'bhari[container-width-single]', array(
 		'default' => $defaults['container-width-single'],
 		'type' => 'option',
-		// 'sanitize_callback' => 'generate_sanitize_integer',
+		'sanitize_callback' => array( 'Bhari_Customize_Sanitize', '_sanitize_integer' ),
 		'transport' => 'postMessage'
 	) );
 
@@ -237,7 +246,7 @@ function bhari_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 'bhari[container-width-page]', array(
 		'default' => $defaults['container-width-page'],
 		'type' => 'option',
-		// 'sanitize_callback' => 'generate_sanitize_integer',
+		'sanitize_callback' => array( 'Bhari_Customize_Sanitize', '_sanitize_integer' ),
 		'transport' => 'postMessage'
 	) );
 
@@ -254,6 +263,41 @@ function bhari_customize_register( $wp_customize ) {
 		'settings' => 'bhari[container-width-page]',
 	)));
 
+	/**
+	 * Section - Colors
+	 */
+	$wp_customize->add_setting( 'bhari[link-color]', array(
+		'default'              => $defaults['link-color'],
+		'sanitize_callback'    => array( 'Bhari_Customize_Sanitize', '_sanitize_hex_color' ),
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+	) );
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bhari[link-color]', array(
+		'label'   => __( 'Link / Theme Color' ),
+		'section'     => 'colors',
+		// 'priority' => 40,
+	) ) );
+
+	$wp_customize->add_setting( 'bhari[link-h-color]', array(
+		'default'              => $defaults['link-h-color'],
+		'sanitize_callback'    => array( 'Bhari_Customize_Sanitize', '_sanitize_hex_color' ),
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+	) );
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bhari[link-h-color]', array(
+		'label'   => __( 'Link Hover Color' ),
+		'section'     => 'colors',
+		// 'priority' => 40,
+	) ) );
+
+	$wp_customize->add_setting( 'bhari[text-color]', array(
+		'default'              => $defaults['text-color'],
+		'sanitize_callback'    => array( 'Bhari_Customize_Sanitize', '_sanitize_hex_color' ),
+		'sanitize_js_callback' => 'maybe_hash_hex_color',
+	) );
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bhari[text-color]', array(
+		'label'   => __( 'Text Color' ),
+		'section'     => 'colors',
+		// 'priority' => 40,
+	) ) );
 }
 add_action( 'customize_register', 'bhari_customize_register' );
 
@@ -274,15 +318,15 @@ if ( ! function_exists( 'bhari_customizer_controls_css' ) ) :
 /**
  * Add CSS for our controls
  *
- * @since 1.3.41
+ * @since 1.0.0
  */
 add_action( 'customize_controls_enqueue_scripts', 'bhari_customizer_controls_css' );
 function bhari_customizer_controls_css()
 {
 	if( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-		wp_enqueue_style( 'generate-customizer-controls-css', get_template_directory_uri().'/inc/assets/unminified/css/customizer.css', array() );
+		wp_enqueue_style( 'bhari-customizer-controls-css', get_template_directory_uri().'/inc/assets/unminified/css/customizer.css', array() );
 	} else {
-		wp_enqueue_style( 'generate-customizer-controls-css', get_template_directory_uri().'/inc/assets/minified/css/customizer.min.css', array() );
+		wp_enqueue_style( 'bhari-customizer-controls-css', get_template_directory_uri().'/inc/assets/minified/css/customizer.min.css', array() );
 	}
 }
 endif;

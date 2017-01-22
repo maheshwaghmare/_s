@@ -4,7 +4,7 @@
  */
 
 .page-title i {
-    margin-right: 0.2em;
+    margin-right: 0.5em;
 }
 
 /**
@@ -19,6 +19,7 @@
 /**
  * Entry Content
  */
+.comment-content a,
 .entry-content a {
     border-bottom: 1px dotted;
     padding-bottom: 3px;

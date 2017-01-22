@@ -2,7 +2,6 @@
 	clear: both;
 	display: block;
 	width: 100%;
-	text-align: center;
 
 	ul {
 		display: none;
@@ -10,7 +9,7 @@
 		margin: 0;
 		padding-left: 0;
 
-		@media screen and ( min-width: 768px ) {
+		@media screen and (min-width: 37.5em) {
 			ul {
 				float: left;
 				position: absolute;
@@ -33,13 +32,6 @@
 					width: 200px;
 				}
 
-				:hover > a,
-				.focus > a {
-				}
-
-				a:hover,
-				a.focus {
-				}
 			}
 		}
 

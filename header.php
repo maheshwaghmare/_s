@@ -41,7 +41,11 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'bhari' ); ?></button>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+				<?php if( BHARI_SUPPORT_FONTAWESOME ) : ?>
+					<i class="fa fa-reorder"></i>
+				<?php endif; ?>
+				<?php esc_html_e( 'Primary Menu', 'bhari' ); ?></button>
 			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
 

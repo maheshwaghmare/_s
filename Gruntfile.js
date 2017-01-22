@@ -179,8 +179,7 @@ module.exports = function (grunt) {
                 },
                 {  //  bhari.min.css
                     src: [
-                        'style.css',
-                        'assets/minified/css/font-awesome.min.css',
+                        'style.css'
                     ],
                     dest: 'assets/minified/css/bhari.min.css'
                 },

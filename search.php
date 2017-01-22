@@ -16,7 +16,12 @@ get_header(); ?>
 		if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><i class="fa fa-search"></i> <?php printf( esc_html__( 'Search Results for: %s', 'bhari' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-title">
+				<?php if( BHARI_SUPPORT_FONTAWESOME ) : ?>
+					<i class="fa fa-search"></i>
+				<?php endif; ?>
+				<?php echo sprintf( esc_html__( 'Search Results for: %s', 'bhari' ), '<span>' . get_search_query() . '</span>' ); ?>
+				</h1>
 			</header><!-- .page-header -->
 
 			<?php
@@ -34,8 +39,8 @@ get_header(); ?>
 
 			the_posts_pagination( array(
 				'mid_size'  => 4,
-				'prev_text' => __( '<i class="fa fa-angle-left"></i> Previous', 'awesome-blog' ),
-				'next_text' => __( 'Next <i class="fa fa-angle-right"></i>', 'awesome-blog' ),
+				'prev_text' => bhari_strings( 'pagination-prev' ),
+				'next_text' => bhari_strings( 'pagination-next' ),
 			) );
 
 		else :

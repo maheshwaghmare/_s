@@ -134,6 +134,26 @@
     color: $color__link-caption;
 }
 
+.link-wrap {
+    display: inline-block;
+}
+
+.nav-next,
+.nav-previous {
+    .link-icon {
+        color: $color__link-caption;
+        vertical-align: 50%;
+    }
+}
+
+.nav-previous .link-icon {
+    padding-right: 0.5em;
+}
+
+.nav-next .link-icon {
+    padding-left: 0.5em;
+}
+
 /**
  * => Password Protected
  */

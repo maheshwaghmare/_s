@@ -28,13 +28,17 @@
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
 			<?php
+				/**
+				 * Edit link
+				 */
+				$edit_icon = ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-edit"></i> ' : '';
 				edit_post_link(
 					sprintf(
 						/* translators: %s: Name of current post */
 						esc_html__( 'Edit %s', 'bhari' ),
 						the_title( '<span class="screen-reader-text">"', '"</span>', false )
 					),
-					'<span class="edit-link"> <i class="fa fa-edit"></i> ',
+					'<span class="edit-link">' . $edit_icon,
 					'</span>'
 				);
 			?>

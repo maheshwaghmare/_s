@@ -1,6 +1,6 @@
 html {
 	box-sizing: border-box;
-	@media ( max-width: 768px ) {
+	@media screen and (max-width: 37.5em) {
 		font-size: 85%;
 	}
 }
@@ -15,7 +15,8 @@ body {
 	font-size: $font_size__body;
 	line-height: $font__line-height-body;
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
-	@media all and ( max-width: 768px ) {
+	
+	@media screen and (max-width: 37.5em) {
 		font-size: $mobile_font_size__body;
 	}
 }

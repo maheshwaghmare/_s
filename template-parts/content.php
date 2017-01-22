@@ -34,12 +34,17 @@
 			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
 		endif;
 
-		if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php bhari_posted_on(); ?>
-		</div><!-- .entry-meta -->
-		<?php
-		endif; ?>
+		if ( 'post' === get_post_type() ) :
+
+			/**
+			 * Print post meta
+			 * 
+			 * @see  bhari_post_meta($meta_list, $before, $after)
+			 */
+			bhari_post_meta( array('author', 'date', 'category', 'tags'), '<div class="entry-meta">', '</div><!-- .entry-meta -->' );
+
+		endif;
+		?>
 
 	</header><!-- .entry-header -->
 

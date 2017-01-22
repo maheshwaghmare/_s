@@ -24,7 +24,6 @@ get_header(); ?>
 				<header>
 					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
 				</header>
-
 			<?php
 			endif;
 
@@ -42,8 +41,8 @@ get_header(); ?>
 
 			the_posts_pagination( array(
 				'mid_size'  => 4,
-				'prev_text' => __( '<i class="fa fa-angle-left"></i> Previous', 'bhari' ),
-				'next_text' => __( 'Next <i class="fa fa-angle-right"></i>', 'bhari' ),
+				'prev_text' => bhari_strings( 'pagination-prev' ),
+				'next_text' => bhari_strings( 'pagination-next' ),
 			) );
 
 		else :

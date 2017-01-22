@@ -11,7 +11,12 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><i class="fa fa-warning"></i> <?php esc_html_e( 'Nothing Found', 'bhari' ); ?></h1>
+		<h1 class="page-title">
+			<?php if( BHARI_SUPPORT_FONTAWESOME ) : ?>
+				<i class="fa fa-warning"></i>
+			<?php endif; ?>
+			<?php esc_html_e( 'Nothing Found', 'bhari' ); ?>
+		</h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
