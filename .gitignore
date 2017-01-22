@@ -12,6 +12,3 @@ node_modules/
 
 # Skip package file from versoning
 bhari.zip
-
-# ignore git inside subproject
-admin/bsf-core/.git
