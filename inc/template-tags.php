@@ -8,32 +8,6 @@
  */
 
 /**
- * Add sidebars
- */
-if( ! function_exists('bhari_get_sidebar_layout') ) :
-	function bhari_get_sidebar_layout( $layout ) {
-
-		switch ( $layout ) {
-
-			case 'layout-sidebar-content' :
-						get_sidebar( 'left' );
-					break;
-
-			case 'layout-content-sidebar' :
-						get_sidebar( 'right' );
-					break;
-
-			case 'layout-content-sidebar-sidebar' :
-			case 'layout-sidebar-content-sidebar' :
-			case 'layout-sidebar-sidebar-content' :
-						get_sidebar( 'left' );
-						get_sidebar( 'right' );
-				break;
-		}
-	}
-endif;
-
-/**
  * Get sidebar for page's
  */
 if( ! function_exists('bhari_get_sidebar_page') ) :
@@ -64,31 +38,10 @@ if( ! function_exists('bhari_get_sidebar_archive') ) :
 endif;
 
 /**
- * Theme default strings
- */
-if( ! function_exists('bhari_strings') ) :
-	function bhari_strings( $request_string = '', $default_val = '' ) {
-
-		$defaults = apply_filters( 'bhari/default_strings', array(
-			'pagination-prev'        => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-angle-left"></i> ' . __( ' Previous', 'bhari' ) : '' . __( ' Previous', 'bhari' ),
-			'pagination-next'        => ( BHARI_SUPPORT_FONTAWESOME ) ? __( 'Next', 'bhari' ) . ' <i class="fa fa-angle-right"></i>' : __( 'Next', 'bhari' ),
-			'single-pagination-prev' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-icon"><i class="fa fa-angle-left"></i></span><span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ),
-			'single-pagination-next' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span><span class="link-icon"><i class="fa fa-angle-right"></i></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span>' ),
-		) );
-
-		if( array_key_exists($request_string, $defaults) ) {
-			return $defaults[$request_string];
-		} else {
-			return $default_val;
-		}
-	}
-endif;
-
-/**
  * Archive Title
  */
-if( ! function_exists('bhari_archive_title') ) :
-	function bhari_archive_title() {
+if( ! function_exists('bhari_the_archive_title') ) :
+	function bhari_the_archive_title() {
 		$icons = array(
 			'tag'      => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-tag"></i>' : '',
 			'category' => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-folder"></i>' : '',
@@ -321,4 +274,31 @@ if ( ! function_exists( 'bhari_category_transient_flusher' ) ) :
 	}
 	add_action( 'edit_category', 'bhari_category_transient_flusher' );
 	add_action( 'save_post',     'bhari_category_transient_flusher' );
+endif;
+
+/**
+ * Breadcrumbs
+ */
+if ( ! function_exists( 'bhari_breadcrumb' ) ) :
+	function bhari_breadcrumb() {
+		echo '<a href="'.home_url().'" rel="nofollow">Home</a>';
+		if( is_category() || is_single() ) {
+			echo ">";
+			the_category('&bull;');
+			if( is_single() ) {
+				echo '>';
+				the_title();
+			}
+		} elseif( is_page() ) {
+			echo '>';
+			echo the_title();
+		} elseif( is_search() ) {
+			echo '>';
+			echo 'Search result for...';
+			echo '<em>';
+			echo the_search_query();
+			echo '</em>';
+		}
+	}
+	// add_action( 'wp_head', 'bhari_breadcrumb' );
 endif;

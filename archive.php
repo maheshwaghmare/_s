@@ -17,7 +17,7 @@ get_header(); ?>
 
 			<header class="page-header">
 				<?php
-					bhari_archive_title();
+					bhari_the_archive_title();
 					the_archive_description( '<div class="archive-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->

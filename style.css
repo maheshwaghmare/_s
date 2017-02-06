@@ -1,9 +1,9 @@
 /*!
 Theme Name: Bhari
-Theme URI: http://underscores.me/
+Theme URI: https://github.com/maheshwaghmare/bhari
 Author: Mahesh M. Waghmare
 Author URI: https://maheshwaghmare.wordpress.com/
-Description: Simple Awesome Theme for Bloggers.
+Description: Simple Theme for Bloggers.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -1405,19 +1405,20 @@ input.search-submit {
   margin-right: 0.5em;
 }
 
-.comment-form-author,
-.comment-form-url,
-.comment-form-email {
-  width: 33.33%;
-  display: inline-block;
-  float: left;
-}
-
-.comment-form-author label,
-.comment-form-url label,
-.comment-form-email label {
-  width: 100%;
-  display: inline-block;
+@media all and (min-width: 768px) {
+  .comment-form-author,
+  .comment-form-url,
+  .comment-form-email {
+    width: 33.33%;
+    display: inline-block;
+    float: left;
+  }
+  .comment-form-author label,
+  .comment-form-url label,
+  .comment-form-email label {
+    width: 100%;
+    display: inline-block;
+  }
 }
 
 /**

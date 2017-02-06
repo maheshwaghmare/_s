@@ -1,6 +1,9 @@
 module.exports = function (grunt) {
     'use strict';
-    // Project configuration
+
+    /**
+     * Project configuration
+     */
     var autoprefixer = require('autoprefixer');
     var flexibility = require('postcss-flexibility');
 
@@ -221,12 +224,16 @@ module.exports = function (grunt) {
                     '!phpunit.xml.dist',
                     '!*.sh',
                     '!*.map',
-                    '!Gruntfile.js',
-                    '!package.json',
                     '!.gitignore',
                     '!phpunit.xml',
                     '!CONTRIBUTING.md',
                     '!codesniffer.ruleset.xml',
+
+                    /**
+                     * Disable for master
+                     */
+                    '!Gruntfile.js',
+                    '!package.json',
                 ],
                 dest: 'bhari/'
             }
@@ -313,19 +320,19 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-wp-i18n');
 
-    // rtlcss [you will still need to install ruby and sass on your system manually to run this]
+    //  Generate RTL
     grunt.registerTask('rtl', ['rtlcss']);
 
-    // SASS compile
+    //  Compile SCSS
     grunt.registerTask('scss', ['sass']);
 
-    // Style
+    // Compile & Generate CSS & RTL from SCSS
     grunt.registerTask('style', ['scss', 'postcss:style', 'rtl']);
 
-    // min all
+    // Minify JS & CSS
     grunt.registerTask('minify', ['style', 'uglify:js', 'cssmin:css']);
 
-    // Grunt release - Create installable package of the local files
+    // Generate Release package
     grunt.registerTask('release', ['clean:zip', 'copy', 'compress', 'clean:main']);
 
     // i18n

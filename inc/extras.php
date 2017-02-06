@@ -9,6 +9,53 @@
  */
 
 /**
+ * Theme default strings
+ */
+if( ! function_exists('bhari_strings') ) :
+	function bhari_strings( $request_string = '', $default_val = '' ) {
+
+		$defaults = apply_filters( 'bhari/default_strings', array(
+			'pagination-prev'        => ( BHARI_SUPPORT_FONTAWESOME ) ? '<i class="fa fa-angle-left"></i> ' . __( ' Previous', 'bhari' ) : '' . __( ' Previous', 'bhari' ),
+			'pagination-next'        => ( BHARI_SUPPORT_FONTAWESOME ) ? __( 'Next', 'bhari' ) . ' <i class="fa fa-angle-right"></i>' : __( 'Next', 'bhari' ),
+			'single-pagination-prev' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-icon"><i class="fa fa-angle-left"></i></span><span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Previous Article</span><span class="link-title">%title</span></span>' ),
+			'single-pagination-next' => ( BHARI_SUPPORT_FONTAWESOME ) ? __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span><span class="link-icon"><i class="fa fa-angle-right"></i></span>' ) : __( '<span class="link-wrap"><span class="link-caption">Next Article</span><span class="link-title">%title</span></span>' ),
+		) );
+
+		if( array_key_exists($request_string, $defaults) ) {
+			return $defaults[$request_string];
+		} else {
+			return $default_val;
+		}
+	}
+endif;
+
+/**
+ * Add sidebars
+ */
+if( ! function_exists('bhari_get_sidebar_layout') ) :
+	function bhari_get_sidebar_layout( $layout ) {
+
+		switch ( $layout ) {
+
+			case 'layout-sidebar-content' :
+						get_sidebar( 'left' );
+					break;
+
+			case 'layout-content-sidebar' :
+						get_sidebar( 'right' );
+					break;
+
+			case 'layout-content-sidebar-sidebar' :
+			case 'layout-sidebar-content-sidebar' :
+			case 'layout-sidebar-sidebar-content' :
+						get_sidebar( 'left' );
+						get_sidebar( 'right' );
+				break;
+		}
+	}
+endif;
+
+/**
  * Get individual option
  */
 if( ! function_exists('bhari_get_option') ) :
@@ -35,13 +82,10 @@ if( ! function_exists('bhari_body_class') ) :
 
 		if( is_home() || is_archive() || is_search() ) {
 			$layout = bhari_get_option( 'sidebar-archive' );
-			$page = 'is_search';
 		} else if( is_page() || is_404() ) {
 			$layout = bhari_get_option( 'sidebar-page' );
-			$page = 'is_404';
 		} else if( is_single() ) {
 			$layout = bhari_get_option( 'sidebar-single' );
-			$page = 'is_single';
 		}
 
 		switch ( $layout ) {
@@ -73,19 +117,14 @@ if( ! function_exists('bhari_wp_head') ) :
 	function bhari_wp_head( $classes ) {
 
 		if( is_home() || is_archive() || is_search() ) {
-			$page = 'Blog as Home / Archive';
 			$content_width = bhari_get_option( 'container-width-archive' );
 		} else if( is_page() || is_404() ) {
-			$page = 'Static page as Home / Page';
 			$content_width = bhari_get_option( 'container-width-page' );
 		} else if( is_single() ) {
-			$page = 'Post';
 			$content_width = bhari_get_option( 'container-width-single' );
 		} else {
-			$page = 'Not found';
 			$content_width = 1100;
 		}
-		// vl( $page . ' ' . $content_width );
 
 		?>
 		<style type="text/css">

@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * Bhari functions and definitions.
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ *
+ * @package Bhari
+ */
+
+/**
  * Define constants
  */
 define( 'BHARI_SUPPORT_FONTAWESOME', true );
@@ -58,14 +66,6 @@ if ( ! function_exists( 'vl' ) ) {
     }
     
 }
-
-/**
- * Bhari functions and definitions.
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package Bhari
- */
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
